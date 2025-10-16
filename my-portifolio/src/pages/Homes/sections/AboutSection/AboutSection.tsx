@@ -1,98 +1,43 @@
-import { Box, Card, Container, Grid, Typography, styled } from "@mui/material"
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import SchoolIcon from '@mui/icons-material/School';
-import AnimationComponent from "../../../../components/AnimationComponent/AnimationComponent";
-import StyledPHP from "../../../../components/StyledButton/StyledPHP";
-import StyledPython from "../../../../components/StyledButton/StyledPython";
-import StyledReact from "../../../../components/StyledButton/StyledReact";
-import StyledLaravel from "../../../../components/StyledButton/StyledLavarel";
-import StyledCSharp from "../../../../components/StyledButton/StyledCSharp";
-import StyledFigma from "../../../../components/StyledButton/StyledFigma";
+// src/sections/AboutSection.tsx
+import { motion } from 'framer-motion';
 
-const AboutSection: React.FC = () => {
-
-    const StyledCard = styled(Card)(({ theme }) => ({
-        padding: "10px 10px",
-        textAlign: "center",
-        marginBottom: "10px",
-        '&:hover': {
-            backgroundColor: theme.palette.secondary.light
-        }
-    }));
-    const StyledCon = styled(Card)(() => ({
-        backgroundColor: "#31323e",
-    // A correção está na linha abaixo
-        }));
-    
-
-    const skillsSet = [
-        <StyledPHP />, <StyledLaravel />, <StyledReact />, <StyledPython />, <StyledCSharp />, <StyledFigma />, "CSS", "Cypress", "AWS", "GCP", "Material UI", "Figma"
-    ]
-
-    return (
-        <>
-            <StyledCon>
-                <Container maxWidth="lg">
-                <Box id="about" pt={5} mb={3}>
-                    <Typography variant="h2" textAlign="center" color="white">About me</Typography>
-                </Box>
-                <Grid container spacing={2} display="flex" justifyContent="center" pb={3}>
-                    <Grid size={{ xs: 9, md: 2.5 }}>
-                        <AnimationComponent moveDirection="right">
-                            <StyledCard variant="outlined">
-                                <WorkspacePremiumIcon />
-                                <Typography textAlign="center" fontWeight={600}>Experience</Typography>
-                                <Typography textAlign="center">1+ years</Typography>
-                                <Typography textAlign="center">Frontend Development</Typography>
-                            </StyledCard>
-                        </AnimationComponent>
-                    </Grid>
-                    <Grid size={{ xs: 9, md: 2.5 }}>
-                        <AnimationComponent moveDirection="left">
-                            <StyledCard variant="outlined">
-                                <SchoolIcon />
-                                <Typography textAlign="center" fontWeight={600}>Education</Typography>
-                                <Typography textAlign="center">Bachelors Degree</Typography>
-                                <Typography textAlign="center">Electrical Engineer</Typography>
-                            </StyledCard>
-                        </AnimationComponent>
-
-                    </Grid>
-                </Grid>
-                <Box pb={1}>
-                    <Typography color="white">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Cras porta semper velit vel rutrum.
-                        Aliquam vulputate, nisi eget tristique mattis, nisi sem faucibus eros, a auctor felis sem ut mauris.
-                        Phasellus a ultrices elit.
-                        Curabitur ut diam eu orci auctor pretium.
-                        Nullam ultricies erat quam, eget porta velit vehicula sit amet.
-                        Nullam sodales iaculis metus, sed vestibulum nisl vulputate at.
-                        Integer in pulvinar libero.
-                        Donec ornare est quis tortor varius efficitur.
-                        Maecenas sed erat quis felis facilisis pellentesque.
-                        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id felis convallis, luctus lorem eget, varius dolor.
-                    </Typography>
-                </Box>
-                <hr />
-                <Box id="skills" pt={1} mb={3}>
-                    <Typography variant="h3" textAlign="center" fontWeight={300}>Skills</Typography>
-                </Box>
-                <Box mb={5}>
-                    <Grid container spacing={3} justifyContent="center">
-                        {skillsSet.map((skill, index) => (
-                            <Grid key={index} size={{  xs:5, sm:4, md:2, lg:2}} >
-                                {skill}
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-            </Container>
-
-            </StyledCon>
-            
-        </>
-    )
+export function AboutSection() {
+  return (
+    <section id="about" className="min-h-screen flex items-center justify-center py-20 px-6">
+      <div className="container mx-auto max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+            Sobre <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mim</span>
+          </h2>
+          <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-800">
+            {/* ... (Todo o seu conteúdo da seção Sobre Mim) ... */}
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              Sou João Pedro Costa Roblez, estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, com grande interesse em criar soluções tecnológicas que unam eficiência e inovação.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              Tenho foco no desenvolvimento de sistemas bem estruturados, com atenção à qualidade do código, usabilidade e boas práticas de engenharia de software.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Busco constantemente aprimorar meus conhecimentos e contribuir para projetos que gerem impacto real por meio da tecnologia.
+            </p>
+            <div className="mt-8 pt-8 border-t border-slate-800">
+                <h3 className="text-xl font-semibold mb-4 text-blue-400">Formação</h3>
+                <p className="text-slate-300">
+                    <strong>Fatec - Faculdade de Tecnologia</strong>
+                    <br />
+                    Análise e Desenvolvimento de Sistemas
+                    <br />
+                    <span className="text-slate-400">Conclusão prevista: Meio de 2026</span>
+                </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
-
-export default AboutSection

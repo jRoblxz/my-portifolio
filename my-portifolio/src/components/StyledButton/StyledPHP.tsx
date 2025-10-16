@@ -1,5 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+interface Skill {
+  name: string;
+  level: number;
+}
+
+const skills: Skill[] = [
+  { name: 'PHP', level: 4},
+]
 
 const Button = () => {
   return (
@@ -31,6 +41,18 @@ const Button = () => {
             <span> </span>
             <span>PHP</span>
           </div>
+          {skills.map((skill, index) => (
+              <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
+                    <motion.div
+                      className="h-full bg-blue-500 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${(skill.level / 5) * 100}%` }}
+                      transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
+                      viewport={{ once: true }}
+                    />
+              </div>
+
+            ))}
         </button>
       </div>
     </StyledPHP>
@@ -50,8 +72,8 @@ const StyledPHP = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 142px;
-    height: 142px;
+    width: 1600px;
+    height: 150px;
     color: #A8BCFF;
     font-weight: bold;
     text-decoration: none;
