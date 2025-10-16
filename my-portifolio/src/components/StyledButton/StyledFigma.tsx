@@ -1,27 +1,43 @@
+import { Star } from 'lucide-react';
 import React from 'react';
 import styled from 'styled-components';
 
 const Button = () => {
   return (
-    <StyledWrapper>
+    <StyledFigma>
       <div className="button-container">
         <button className="brutalist-button openai button-1">
           <div className="openai-logo">
-            <svg className="openai-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5907 8.3829 14.6108 7.2144a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" fill="#10A37F" />
+            <svg className="openai-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.678 7.68" width="64" height="64">
+              <path d="M2.56 7.68A1.28 1.28 0 0 0 3.84 6.4V5.12H2.56a1.28 1.28 0 0 0 0 2.56z" fill="#0acf83"/>
+              <path d="M1.28 3.84a1.28 1.28 0 0 1 1.28-1.28h1.28v2.56H2.56a1.28 1.28 0 0 1-1.28-1.28z" fill="#a259ff"/>
+              <path d="M1.28 1.28A1.28 1.28 0 0 1 2.559 0h1.28v2.56H2.56a1.28 1.28 0 0 1-1.28-1.28z" fill="#f24e1e"/>
+              <path d="M3.84 0h1.28a1.28 1.28 0 0 1 0 2.56H3.84z" fill="#ff7262"/>
+              <path d="M6.4 3.84a1.28 1.28 0 0 1-2.56 0 1.28 1.28 0 0 1 2.56 0z" fill="#1abcfe"/>
             </svg>
           </div>
           <div className="button-text">
-            <span>Powered By</span>
-            <span>GPT-Omni</span>
+            <span> </span>
+            <span>FIGMA</span>
           </div>
+          <div className="button-star absolute bottom-2 left-0 right-0 flex justify-center gap-1 opacity-0 scale-0 transition-all duration-300 delay-100 group-hover:opacity-100 group-hover:scale-100 z-20">
+              {[1, 2, 3, 4, 5].map((star, idx) => (
+                <Star
+                  key={star}
+                  className={`w-4 h-4 transition-all duration-300`}
+                  fill={star <= 4 ? '#FFD700' : 'none'}
+                  stroke={star <= 4 ? '#FFD700' : '#666'}
+                  style={{ animationDelay: `${idx * 0.1}s` }}
+                />
+              ))}
+            </div>
         </button>
       </div>
-    </StyledWrapper>
+    </StyledFigma>
   );
 }
 
-const StyledWrapper = styled.div`
+const StyledFigma = styled.div`
   .button-container {
     display: flex;
     justify-content: center;
@@ -36,7 +52,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     width: 142px;
     height: 142px;
-    color: #e5dede;
+    color: #F2F2F2;
     font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -46,14 +62,14 @@ const StyledWrapper = styled.div`
 
   /* Styles for the first button */
   .button-1 {
-    background-color: #063525;
-    border: 3px solid #42c498;
+    background-color: #2E3139;
+    border: 3px solid #F2F2F2;
     border-radius: 12px;
     box-shadow: 4px 4px 1px #000000;
   }
 
   .button-1:hover {
-    background-color: #1a5c46;
+    background-color: #2E3139;
     border-color: #030504;
     transform: translate(-6px, -6px) rotate(1deg);
     box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
@@ -154,6 +170,15 @@ const StyledWrapper = styled.div`
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 3;
   }
+  .button-star {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 3;
+  }
 
   .button-text span:first-child {
     font-size: 12px;
@@ -175,6 +200,7 @@ const StyledWrapper = styled.div`
   }
 
   .brutalist-button:hover .button-text,
+  .brutalist-button:hover .button-star,
   .brutalist-button:hover .openai-text {
     opacity: 1;
     max-height: 60px;
@@ -204,7 +230,8 @@ const StyledWrapper = styled.div`
 
   .brutalist-button:active .openai-icon,
   .brutalist-button:active .openai-text,
-  .brutalist-button:active .button-text {
+  .brutalist-button:active .button-text,
+  .brutalist-button:active .button-star {
     transform: scale(0.95);
   }`;
 
