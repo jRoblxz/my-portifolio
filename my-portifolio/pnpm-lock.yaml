@@ -20,6 +20,7 @@ importers:
       '@mui/material':
         specifier: ^7.3.4
         version: 7.3.4(@emotion/react@11.14.0(@types/react@19.2.2)(react@19.2.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.2)(react@19.2.0))(@types/react@19.2.2)(react@19.2.0))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.2.2)(react@19.2.0)
@@ -47,9 +48,9 @@ importers:
       styled-components:
         specifier: ^6.1.19
         version: 6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      tailwind-merge:
-        specifier: ^3.3.1
-        version: 3.3.1
+      tailwindcss:
+        specifier: ^4.1.14
+        version: 4.1.14
     devDependencies:
       '@eslint/js':
         specifier: ^9.36.0
@@ -1174,6 +1175,7 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
+
   framer-motion@12.23.24:
     resolution: {integrity: sha512-HMi5HRoRCTou+3fb3h9oTLyJGBxHfW+HnNE25tAXOvVx/IvwMHK0cx7IR4a2ZU6sh3IX1Z+4ts32PcYBOqka8w==}
     peerDependencies:
@@ -1624,6 +1626,7 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+<<<<<<< HEAD
   tailwind-merge@3.3.1:
     resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
 
@@ -2813,8 +2816,11 @@ snapshots:
 
   flatted@3.3.3: {}
 
+<<<<<<< HEAD
   fraction.js@4.3.7: {}
 
+=======
+>>>>>>> 22b0354a234903fc5f0bb127a7affbf875f5c5ab
   framer-motion@12.23.24(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       motion-dom: 12.23.23
@@ -2998,12 +3004,15 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.2
 
+<<<<<<< HEAD
   minipass@7.1.2: {}
 
   minizlib@3.1.0:
     dependencies:
       minipass: 7.1.2
 
+=======
+>>>>>>> 22b0354a234903fc5f0bb127a7affbf875f5c5ab
   motion-dom@12.23.23:
     dependencies:
       motion-utils: 12.23.6
@@ -3198,6 +3207,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+
   tailwind-merge@3.3.1: {}
 
   tailwindcss@4.1.14: {}
@@ -3211,6 +3221,9 @@ snapshots:
       minipass: 7.1.2
       minizlib: 3.1.0
       yallist: 5.0.0
+
+  tailwindcss@4.1.14: {}
+
 
   tinyglobby@0.2.15:
     dependencies:
