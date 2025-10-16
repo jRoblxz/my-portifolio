@@ -39,7 +39,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
     <Typography
       variant={variant}
       color={color}
-      textAlign="center"
+      textAlign="left"
       sx={{ fontFamily: "monospace" }}
     >
       {currentText}

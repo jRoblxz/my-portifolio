@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import './App.css'
 import { Button } from '@/components/ui/button'
+import Typewriter from './components/Typewriter/Typewriter'
 
 // Import assets
 import avatarImg from './assets/Images/Avatar.jpeg'
@@ -158,7 +159,8 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                Software Developer
+                <Typewriter text="Software Developer" delay={120} />
+                
               </motion.p>
               <motion.p
                 className="text-lg text-slate-400 mb-8 max-w-xl"
@@ -181,21 +183,34 @@ function App() {
                 >
                   Ver Projetos
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-slate-700 hover:bg-slate-800"
-                  onClick={() => scrollToSection('about')}
-                >
-                  Sobre Mim
+                <Button className="
+                  relative overflow-hidden rounded-[0.5em] border-none 
+                  bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] 
+                  font-medium text-white tracking-wider 
+                  cursor-pointer
+                  transition-transform duration-150 ease-in-out active:scale-95
+                  
+                  before:content-[''] before:absolute before:top-0 before:left-[-10%] 
+                  before:w-[120%] before:h-full before:bg-black before:skew-x-[30deg] 
+                  before:z-0 before:transition-transform before:duration-400 
+                  before:ease-[cubic-bezier(0.3,1,0.8,1)]
+                  
+                  hover:before:translate-x-full
+
+                  w-33 h-10 justify-center
+                ">
+                  <span className="relative z-10 inline-flex items-center                     
+                    transition-colors duration-400
+                  ">
+                    Sobre mim
+                  </span>
                 </Button>
               </motion.div>
               <motion.div
-                className="flex gap-4 mt-8"
+                className="flex gap-4 mt-5"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-              >
+                transition={{ delay: 1 }}>
                 <a
                     href="https://www.spotify.com/" // URL correta
                     target="_blank"
@@ -219,9 +234,12 @@ function App() {
                   </a>
                 <a
                   href="mailto:joaopedro@example.com"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-slate-800 transition-colors"
                 >
-                  <Mail size={24} />
+                  <span
+                      className="absolute bottom-0 left-0 h-0 w-full bg-[#d00909] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
+                    ></span>
+                  <Mail className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white"  size={24} />
                 </a>
               </motion.div>
             </motion.div>
