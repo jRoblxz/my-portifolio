@@ -44,7 +44,7 @@ const Button = () => {
           {skills.map((skill, index) => (
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
                     <motion.div
-                      className="h-full bg-blue-500 rounded-full"
+                      className="h-full bg-[#94a6e1ff] rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${(skill.level / 5) * 100}%` }}
                       transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}

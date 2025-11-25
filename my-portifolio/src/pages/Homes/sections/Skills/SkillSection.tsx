@@ -1,18 +1,19 @@
 // src/sections/SkillsSection.tsx
 import { motion } from 'framer-motion';
 
-import unityIcon from '../../../../assets/Images/unity.png'
-import pythonIcon from '../../../../assets/Images/python.svg'
-import csharpIcon from '../../../../assets/Images/csharp.svg'
-import reactIcon from '../../../../assets/Images/react.svg'
 import htmlIcon from '../../../../assets/Images/html.svg'
 import cssIcon from '../../../../assets/Images/css.svg'
-import gitIcon from '../../../../assets/Images/git.svg'
-import githubIcon from '../../../../assets/Images/github.png'
-import figmaIcon from '../../../../assets/Images/figma.svg'
 import mysqlIcon from '../../../../assets/Images/mysql.svg'
 import StyeledPHP from '../../../../components/StyledButton/StyledPHP'
 import StyeledLaravel from '../../../../components/StyledButton/StyledLavarel'
+import StyledPython from '../../../../components/StyledButton/StyledPython'
+import StyledReact from '../../../../components/StyledButton/StyledReact'
+import StyledCSharp from '../../../../components/StyledButton/StyledCSharp'
+import StyledUnity from '../../../../components/StyledButton/StyledUnity'
+import StyledGitHub from '../../../../components/StyledButton/StyledGitHub'
+import StyledGit from '../../../../components/StyledButton/StyledGit'
+import StyledFigma from '../../../../components/StyledButton/StyledFigma'
+import StyledHTML from '../../../../components/StyledButton/StyledHTML'
 
 interface Skill {
   name: string
@@ -24,14 +25,7 @@ interface Skill {
 const skills: Skill[] = [
   { name: 'HTML', level: 5, icon: htmlIcon },
   { name: 'CSS', level: 5, icon: cssIcon },
-  { name: 'Python', level: 4.5, icon: pythonIcon },
-  { name: 'Figma', level: 4.5, icon: figmaIcon },
-  { name: 'C#', level: 4, icon: csharpIcon },
-  { name: 'GitHub', level: 4, icon: githubIcon },
-  { name: 'Git', level: 3.5, icon: gitIcon },
-  { name: 'React', level: 3, icon: reactIcon },
   { name: 'MySQL', level: 3, icon: mysqlIcon },
-  { name: 'Unity', level: 2.5, icon: unityIcon },
 ]
 export function SkillsSection() {
   return (
@@ -44,11 +38,19 @@ export function SkillsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            Minhas <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Habilidades</span>
+            My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Skills</span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
             <StyeledPHP />
             <StyeledLaravel />
+            <StyledPython />
+            <StyledReact />
+            <StyledUnity />
+            <StyledCSharp />
+            <StyledGitHub />
+            <StyledGit />
+            <StyledFigma />
+            <StyledHTML />
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}

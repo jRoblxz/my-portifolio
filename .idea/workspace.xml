@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8dd69879-583f-4046-a53a-6624d8977bba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/my-portifolio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledCSharp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledCSharp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledFigma.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledFigma.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledLavarel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledLavarel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledPHP.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledPHP.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledPython.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledPython.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledReact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/components/StyledButton/StyledReact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-portifolio/src/pages/Homes/sections/Skills/SkillSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-portifolio/src/pages/Homes/sections/Skills/SkillSection.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jRoblxz"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jRoblxz/my-portifolio.git",
+    "accountId": "11ed382d-46c6-4341-a2cf-a0a1eecb9c60"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="34SzfAfLyqqqTwDUqwLFCyf7Y1I" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "joao",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8dd69879-583f-4046-a53a-6624d8977bba" name="Changes" comment="" />
+      <created>1761221862364</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761221862364</updated>
+      <workItem from="1761221863772" duration="43000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
+interface Skill {
+  name: string;
+  level: number;
+}
+
+const skills: Skill[] = [
+  { name: 'PHP', level: 4},
+]
 const Button = () => {
   return (
     <StyledPython>
@@ -24,15 +33,20 @@ const Button = () => {
           </div>
           <div className="button-text">
             <span>PYTHON</span>
-            <span>30%</span>
+            <span> </span>
           </div>
-          <div className='skill-box progress'>
-            <div className="skill-bar">
-              <span className="skill-per html">
-                <span className="tooltip ">30%</span>
-              </span>
-            </div>
-          </div>
+          {skills.map((skill, index) => (
+              <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
+                    <motion.div
+                      className="h-full bg-[#FFD141] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${(skill.level / 5) * 100}%` }}
+                      transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
+                      viewport={{ once: true }}
+                    />
+              </div>
+
+            ))}
         </button>
       </div>
     </StyledPython>
@@ -116,8 +130,8 @@ const StyledPython = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 142px;
-    height: 142px;
+    width: 1600px;
+    height: 150px;
     color: #FFD141;
     font-weight: bold;
     text-decoration: none;

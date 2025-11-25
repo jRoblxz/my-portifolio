@@ -1,6 +1,15 @@
-import { Star } from 'lucide-react';
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+interface Skill {
+  name: string;
+  level: number;
+}
+
+const skills: Skill[] = [
+  { name: 'REACT', level: 3},
+]
 
 const Button = () => {
   return (
@@ -18,17 +27,18 @@ const Button = () => {
             <span> </span>
             <span>REACT</span>
           </div>
-          <div className="button-star absolute bottom-2 left-0 right-0 flex justify-center gap-1 opacity-0 scale-0 transition-all duration-300 delay-100 group-hover:opacity-100 group-hover:scale-100 z-20">
-              {[1, 2, 3, 4, 5].map((star, idx) => (
-                <Star
-                  key={star}
-                  className={`w-4 h-4 transition-all duration-300`}
-                  fill={star <= 2 ? '#FFD700' : 'none'}
-                  stroke={star <= 2 ? '#FFD700' : '#666'}
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                />
-              ))}
-            </div>
+          {skills.map((skill, index) => (
+              <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
+                    <motion.div
+                      className="h-full bg-[#61DAFB] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${(skill.level / 5) * 100}%` }}
+                      transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
+                      viewport={{ once: true }}
+                    />
+              </div>
+
+            ))}
         </button>
       </div>
     </StyledReact>
@@ -48,8 +58,8 @@ const StyledReact = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 142px;
-    height: 142px;
+    width: 1600px;
+    height: 150px;
     color: #61DAFB;
     font-weight: bold;
     text-decoration: none;
