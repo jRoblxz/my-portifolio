@@ -30,6 +30,7 @@ jobs:
       # Usamos 'shell: bash' para garantir que o comando export seja executado.
       - name: 📦 Install NPM and Build
         shell: bash
+        working-directory: ./my-portifolio
         run: |
           # Instala o pnpm globalmente e força a atualização do PATH
           npm install 
