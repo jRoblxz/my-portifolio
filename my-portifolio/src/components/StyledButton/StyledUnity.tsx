@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import UnityIcon from '../../assets/Images/unity.png'
+import UnityIcon from '@/assets/Images/unity.png'
 
 interface Skill {
   name: string;
@@ -36,7 +36,7 @@ const Button = () => {
             <span> </span>
             <span>UNITY</span>
           </div>
-          {skills.map((skill, index) => (
+          {/* {skills.map((skill, index) => (
             
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
                     <motion.div
@@ -48,7 +48,7 @@ const Button = () => {
                     />
               </div>
 
-            ))}
+            ))} */}
         </button>
       </div>
       </motion.div>

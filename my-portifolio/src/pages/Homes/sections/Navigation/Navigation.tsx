@@ -1,41 +1,124 @@
-// src/sections/Navigation.tsx
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { useLocation } from 'wouter';
 
-interface NavigationProps {
-  activeSection: string;
-  scrollToSection: (sectionId: string) => void;
-}
+export  function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
 
-const navItems = ['hero', 'about', 'skills', 'projects'];
+  const navItems = [
+    { label: 'Início', href: '#home' },
+    { label: 'About', href: '#services' },
+    { label: 'skills', href: '#portfolio' },
+    { label: 'projects', href: '#contact' },
+  ];
 
-export function Navigation({ activeSection, scrollToSection }: NavigationProps) {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+  // Use useLocation para obter a função navigate do Wouter
+    const [, navigate] = useLocation();
+  
+    const handleHomeClick = () => {
+      navigate('/'); // Use a função navigate do Wouter
+    };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
+    <nav className="fixed top-0 w-full bg-[#1e1c1c] shadow-lg z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            transition={{ duration: 0.5 }}
+            className="flex items-center"
           >
-            JPC
+            <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16" >
+              <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto" />
+            </span>
+            
           </motion.div>
-          <div className="hidden md:flex gap-8">
-            {navItems.map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`capitalize transition-colors ${
-                  activeSection === section
-                    ? 'text-blue-400'
-                    : 'text-slate-400 hover:text-white'
-                }`}
+
+          {/* Desktop Navigation */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="hidden md:flex items-center space-x-8"
+          >
+            {navItems.map((item) => (
+              <motion.a
+                key={item.label}
+                variants={itemVariants}
+                href={item.href}
+                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300 relative group"
               >
-                {section === 'hero' ? 'Home' : section}
-              </button>
+                {item.label}
+                <motion.span
+                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#7c3aed] group-hover:w-full transition-all duration-300"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: '100%' }}
+                />
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-[#1e1c1c]"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.button>
         </div>
+
+        {/* Mobile Navigation */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{
+            opacity: isOpen ? 1 : 0,
+            height: isOpen ? 'auto' : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden overflow-hidden"
+        >
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isOpen ? 'visible' : 'hidden'}
+            className="flex flex-col space-y-4 py-4"
+          >
+            {navItems.map((item) => (
+              <motion.a
+                key={item.label}
+                variants={itemVariants}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300"
+              >
+                {item.label}
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     </nav>
   );

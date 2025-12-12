@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 // Importe os novos componentes de seção
-import { Navigation } from './pages/Homes/sections/Navigation/Navigation';
+import { Navigation } from '@/pages/Homes/sections/Navigation/Navigation';
 import { HeroSection } from './pages/Homes/sections/HeroSection/HeroSection';
 import { AboutSection } from './pages/Homes/sections/AboutSection/AboutSection';
 import { SkillsSection } from './pages/Homes/sections/Skills/SkillSection';
@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <main>

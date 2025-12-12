@@ -36,7 +36,7 @@ const Button = () => {
             <span> </span>
             <span>FIGMA</span>
           </div>
-          {skills.map((skill, index) => (
+          {/* {skills.map((skill, index) => (
             
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
                     <motion.div
@@ -48,7 +48,7 @@ const Button = () => {
                     />
               </div>
 
-            ))}
+            ))} */}
         </button>
       </div>
       </motion.div>
@@ -69,8 +69,8 @@ const StyledFigma = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 142px;
-    height: 142px;
+    width: 1600px;
+    height: 150px;
     color: #F2F2F2;
     font-weight: bold;
     text-decoration: none;

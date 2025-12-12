@@ -38,13 +38,13 @@ const Button = () => {
           </div>
           <div className="button-text">
             <span> </span>
-            <span>UNITY</span>
+            <span>HTML</span>
           </div>
-          {skills.map((skill, index) => (
+          {/* {skills.map((skill, index) => (
             
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
                     <motion.div
-                      className="h-full bg-[#000] rounded-full"
+                      className="h-full bg-[#E44F26] rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${(skill.level / 5) * 100}%` }}
                       transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
@@ -52,7 +52,7 @@ const Button = () => {
                     />
               </div>
 
-            ))}
+            ))} */}
         </button>
       </div>
       </motion.div>
@@ -75,7 +75,7 @@ const StyledPHP = styled.div`
     justify-content: center;
     width: 1600px;
     height: 150px;
-    color: #000;
+    color: #FFF;
     font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -85,15 +85,15 @@ const StyledPHP = styled.div`
 
   /* Styles for the first button */
   .button-1 {
-    background-color: #bababa;
-    border: 3px solid #030504;
+    background-color: #f26f37; /*F1662A*/
+    border: 3px solid #E44F26;
     border-radius: 12px;
     box-shadow: 4px 4px 1px #000000;
   }
 
   .button-1:hover {
-    background-color: #bababa;
-    border-color: #030504;
+    background-color: #F1662A;
+    border-color: #E44F26;
     transform: translate(-6px, -6px) rotate(1deg);
     box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
   }
@@ -108,7 +108,7 @@ const StyledPHP = styled.div`
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(0, 0, 0, 0.1),
+      rgba(255, 255, 255, 0.1),
       transparent
     );
     transition: 0.6s;

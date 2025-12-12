@@ -15,6 +15,11 @@ export default defineConfig([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    rules: {
+    // Note: you must disable the base rule as it can report incorrect errors
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
+  },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
