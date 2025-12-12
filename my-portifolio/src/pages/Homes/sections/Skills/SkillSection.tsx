@@ -13,12 +13,6 @@ import StyledHTML from "@/components/StyledButton/StyledHTML";
 import StyledCSS from "@/components/StyledButton/StyledCSS";
 import StyledMySQL from "@/components/StyledButton/StyledMySQL";
 
-interface Skill {
-  name: string;
-  level: number;
-  icon: string;
-}
-
 export function SkillsSection() {
   return (
     <section

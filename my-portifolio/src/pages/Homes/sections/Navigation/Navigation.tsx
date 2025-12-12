@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useLocation } from 'wouter';
 
-export  function Navigation() {
+interface NavigationProps {
+  activeSection: string;
+  scrollToSection: (sectionId: string) => void;
+}
+
+export function Navigation({ activeSection, scrollToSection }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // CORREÇÃO: Os IDs aqui devem ser IGUAIS aos do App.tsx ('hero', 'about', 'skills', 'projects')
   const navItems = [
-    { label: 'Início', href: '#home' },
-    { label: 'About', href: '#services' },
-    { label: 'skills', href: '#portfolio' },
-    { label: 'projects', href: '#contact' },
+    { label: 'Início', id: 'hero' },
+    { label: 'Sobre', id: 'about' },
+    { label: 'Skills', id: 'skills' },
+    { label: 'Projetos', id: 'projects' },
   ];
 
   const containerVariants = {
@@ -32,12 +37,11 @@ export  function Navigation() {
       transition: { duration: 0.5 },
     },
   };
-  // Use useLocation para obter a função navigate do Wouter
-    const [, navigate] = useLocation();
-  
-    const handleHomeClick = () => {
-      navigate('/'); // Use a função navigate do Wouter
-    };
+
+  // CORREÇÃO: Em vez de navigate('/'), usamos o scroll para o topo
+  const handleHomeClick = () => {
+    scrollToSection('hero');
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-[#1e1c1c] shadow-lg z-50">
@@ -50,10 +54,10 @@ export  function Navigation() {
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16" >
-              <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto" />
+            <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16 flex items-center">
+             {/* Certifique-se que essa imagem existe na pasta public */}
+              <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto object-contain" />
             </span>
-            
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -64,19 +68,21 @@ export  function Navigation() {
             className="hidden md:flex items-center space-x-8"
           >
             {navItems.map((item) => (
-              <motion.a
+              <button
                 key={item.label}
-                variants={itemVariants}
-                href={item.href}
-                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300 relative group"
+                onClick={() => scrollToSection(item.id)}
+                className={`font-medium transition-colors duration-300 relative group cursor-pointer bg-transparent border-none
+                  ${activeSection === item.id ? 'text-[#7c3aed]' : 'text-[#e4e0d7] hover:text-[#7c3aed]'}
+                `}
               >
                 {item.label}
-                <motion.span
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#7c3aed] group-hover:w-full transition-all duration-300"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: '100%' }}
-                />
-              </motion.a>
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="underline"
+                    className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-[#7c3aed]"
+                  />
+                )}
+              </button>
             ))}
           </motion.div>
 
@@ -84,7 +90,7 @@ export  function Navigation() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-[#1e1c1c]"
+            className="md:hidden text-[#e4e0d7]"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -98,24 +104,28 @@ export  function Navigation() {
             height: isOpen ? 'auto' : 0,
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          className="md:hidden overflow-hidden bg-[#1e1c1c]"
         >
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isOpen ? 'visible' : 'hidden'}
-            className="flex flex-col space-y-4 py-4"
+            className="flex flex-col space-y-4 py-4 px-4"
           >
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.label}
                 variants={itemVariants}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300"
+                onClick={() => {
+                  scrollToSection(item.id);
+                  setIsOpen(false);
+                }}
+                className={`text-left font-medium transition-colors duration-300 
+                  ${activeSection === item.id ? 'text-[#7c3aed]' : 'text-[#e4e0d7]'}
+                `}
               >
                 {item.label}
-              </motion.a>
+              </motion.button>
             ))}
           </motion.div>
         </motion.div>

@@ -1,15 +1,14 @@
-import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-interface Skill {
-  name: string;
-  level: number;
-}
+// interface Skill {
+//   name: string;
+//   level: number;
+// }
 
-const skills: Skill[] = [
-  { name: 'HTML', level: 4},
-]
+// const skills: Skill[] = [
+//   { name: 'HTML', level: 4},
+// ]
 
 const Button = () => {
   return (

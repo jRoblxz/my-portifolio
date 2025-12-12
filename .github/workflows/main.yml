@@ -1,0 +1,61 @@
+name: 🚀 Deploy test website on push
+
+on:
+  push:
+    branches:
+      - main
+  # Removendo pull_request se o deploy não deve ocorrer ao abrir um PR.
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - Dev
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      
+      # 1. Obter o Código (Step Corrigida)
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+      
+      # 2. Configurar o Node.js e PNPM (Juntos)
+      - name: 🛠️ Setup Node.js and PNPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Não roda a instalação aqui, fazemos no passo 3
+
+      # 3. CRÍTICO: Instala o PNPM globalmente e o utiliza
+      # Usamos 'shell: bash' para garantir que o comando export seja executado.
+      - name: 📦 Install NPM and Build
+        shell: bash
+        run: |
+          # Instala o pnpm globalmente e força a atualização do PATH
+          npm install 
+          npm run build
+
+      # 5. Fazer o Deploy do Conteúdo da pasta 'dist'
+      - name: 📂 Sync files (FTP Deploy)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_SENHA }}
+          local-dir: ./my-portifolio/dist/
+          server-dir: /public_html/joaoroblez/
+          exclude: |
+            public/**
+            vendor/**
+            plugin/**
+            Banco_de_Dados_CR/**
+            crons/**
+            storage/**
+            .github
+            .github/**
+            .env
+            composer.json
+            composer.lock
+            .htaccess
+            config.php
+            config.js

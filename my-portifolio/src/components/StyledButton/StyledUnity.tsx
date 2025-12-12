@@ -1,16 +1,15 @@
-import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import UnityIcon from '@/assets/Images/unity.png'
 
-interface Skill {
-  name: string;
-  level: number;
-}
+// interface Skill {
+//   name: string;
+//   level: number;
+// }
 
-const skills: Skill[] = [
-  { name: 'UNITY', level: 4},
-]
+// const skills: Skill[] = [
+//   { name: 'UNITY', level: 4},
+// ]
 
 const Button = () => {
   return (

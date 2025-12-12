@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-[#1e1c1c] text-[#e4e0d7]">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <main>

@@ -74,6 +74,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
 
                   w-33 h-10 justify-center
                 "
+                onClick={() => scrollToSection('portfolio')}
               >
                 <span
                   className="relative z-10 inline-flex items-center                     
@@ -100,6 +101,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
 
                   w-33 h-10 justify-center
                 "
+                onClick={() => scrollToSection('portfolio')}
               >
                 <span
                   className="relative z-10 inline-flex items-center                     
