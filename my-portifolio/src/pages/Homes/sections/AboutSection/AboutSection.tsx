@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 export function AboutSection() {
   return (
     <section id="services" className="min-h-screen flex items-center justify-center py-20 px-6">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-4xl font-spartan">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center font-spartan">
             Sobre <span className="bg-[#e4e0d7] bg-clip-text text-transparent">Mim</span>
           </h2>
           <div className="bg-[#e4e0d7] backdrop-blur-sm rounded-2xl p-8 border border-slate-800">

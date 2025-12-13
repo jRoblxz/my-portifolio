@@ -9,7 +9,13 @@ import { AboutSection } from './pages/Homes/sections/AboutSection/AboutSection';
 import { SkillsSection } from './pages/Homes/sections/Skills/SkillSection';
 import { ProjectsSection } from './pages/Homes/sections/ProjectsSection/ProjectSection';
 import { Footer } from './pages/Homes/sections/Footer/Footer';
-
+// --- ADICIONE ESTAS LINHAS ---
+// Importa o peso padrão (400)
+import '@fontsource/league-spartan/400.css';
+// Importa pesos adicionais que você pretende usar (ex: 500, 700)
+import '@fontsource/league-spartan/500.css';
+import '@fontsource/league-spartan/700.css';
+// -----------------------------
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -42,7 +48,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1e1c1c] text-[#e4e0d7]">
+    <div className="min-h-screen bg-[#1e1c1c] text-[#e4e0d7] font-spartan">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <main>

@@ -111,7 +111,18 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+/* Exemplo para o peso Normal (400) */
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('./assets/Fonts/TT\ Chocolates\ Trial\ Regular.otf') format('otf'); /* Ajuste o nome do arquivo */
+  font-weight: 400;
+  font-style: normal;
+}
 
+@theme {
+  --font-spartan: "League Spartan", sans-serif;
+  --font-chocolates: "TT Chocolates", sans-serif;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

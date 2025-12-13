@@ -23,7 +23,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4"
+              className="text-5xl md:text-7xl font-bold mb-4 font-spartan" 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -43,7 +43,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               <Typewriter text="Software Developer" delay={120} />
             </motion.p>
             <motion.p
-              className="text-lg text-[#e4e0d7] mb-8 max-w-xl"
+              className="text-lg text-[#e4e0d7] mb-8 max-w-xl font-chocolates"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -72,8 +72,8 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                   
                   hover:before:translate-x-full
 
-                  w-33 h-10 justify-center
-                "
+                  w-33 h-10 justify-center font-spartan
+                " 
                 onClick={() => scrollToSection('portfolio')}
               >
                 <span
@@ -100,12 +100,13 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                   hover:before:translate-x-full
 
                   w-33 h-10 justify-center
+                  font-spartan
                 "
                 onClick={() => scrollToSection('portfolio')}
               >
                 <span
                   className="relative z-10 inline-flex items-center                     
-                    transition-colors duration-400
+                    transition-colors duration-400 font-spartan
                   "
                 >
                   Sobre mim

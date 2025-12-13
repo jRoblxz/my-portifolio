@@ -13,7 +13,7 @@ export function Navigation({ activeSection, scrollToSection }: NavigationProps) 
   // CORREÇÃO: Os IDs aqui devem ser IGUAIS aos do App.tsx ('hero', 'about', 'skills', 'projects')
   const navItems = [
     { label: 'Início', id: 'hero' },
-    { label: 'Sobre', id: 'about' },
+    { label: 'Sobre', id: 'services' },
     { label: 'Skills', id: 'skills' },
     { label: 'Projetos', id: 'projects' },
   ];
@@ -39,26 +39,25 @@ export function Navigation({ activeSection, scrollToSection }: NavigationProps) 
   };
 
   // CORREÇÃO: Em vez de navigate('/'), usamos o scroll para o topo
-  const handleHomeClick = () => {
-    scrollToSection('hero');
-  };
+  // const handleHomeClick = () => {
+  //   scrollToSection('hero');
+  // };
 
   return (
     <nav className="fixed top-0 w-full bg-[#1e1c1c] shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-end items-e h-16">
           {/* Logo */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
             <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16 flex items-center">
-             {/* Certifique-se que essa imagem existe na pasta public */}
               <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto object-contain" />
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Desktop Navigation */}
           <motion.div
