@@ -32,6 +32,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Coluna da Esquerda: Textos */}
           <motion.div
+            className="md:pl-12 lg:pl-24 xl:pl-32"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
