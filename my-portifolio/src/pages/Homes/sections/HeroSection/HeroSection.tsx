@@ -19,7 +19,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
     navigator.clipboard.writeText(email);
     setCopied(true);
     
-    // Volta ao estado normal após 2 segundosaa
+    // Volta ao estado normal após 2 segundosaad
     setTimeout(() => setCopied(false), 2000);
   }
 
