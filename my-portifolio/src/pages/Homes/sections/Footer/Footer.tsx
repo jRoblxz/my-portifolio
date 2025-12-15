@@ -11,7 +11,7 @@ export function Footer() {
           <a href="https://github.com/jRoblxz" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
             <Github size={20} />
           </a>
-          <a href="https://www.linkedin.com/in/joão-pedro-costa-roblez-a87077227/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
+          <a href="https://linkedin.com/in/joaoroblez" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
             <Linkedin size={20} />
           </a>
           <Link to="/contact">

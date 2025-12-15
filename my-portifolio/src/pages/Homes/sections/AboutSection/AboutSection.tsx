@@ -17,13 +17,16 @@ export function AboutSection() {
           <div className="bg-[#e4e0d7] backdrop-blur-sm rounded-2xl p-8 border border-slate-800">
             {/* ... (Todo o seu conteúdo da seção Sobre Mim) ... */}
             <p className="text-lg text-[#1e1c1c] leading-relaxed mb-6">
-              Sou João Pedro Costa Roblez, estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, com grande interesse em criar soluções tecnológicas que unam eficiência e inovação.
+              Sou João Pedro Costa Roblez, estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, atualmente no último termo da graduação, com conclusão prevista para meados de 2026.
             </p>
             <p className="text-lg text-[#1e1c1c] leading-relaxed mb-6">
-              Tenho foco no desenvolvimento de sistemas bem estruturados, com atenção à qualidade do código, usabilidade e boas práticas de engenharia de software.
+              Atuo profissionalmente como <strong>Auxiliar de Desenvolvimento de Sistemas</strong> na <strong>Unoeste</strong>, no departamento de Design Instrucional, responsável pela gestão e desenvolvimento de soluções para laboratórios exclusivos da instituição, como a Sala Betha e a Arena Lab.
+            </p>
+           <p className="text-lg text-[#1e1c1c] leading-relaxed mb-6">
+              Tenho experiência no desenvolvimento de sistemas utilizando <strong>React, PHP e Laravel</strong>, além de conhecimentos iniciais em Unity. Possuo forte interesse em criar soluções tecnológicas que unam eficiência, inovação e qualidade, sempre com atenção às boas práticas de engenharia de software, organização do código e usabilidade.
             </p>
             <p className="text-lg text-[#1e1c1c] leading-relaxed">
-              Busco constantemente aprimorar meus conhecimentos e contribuir para projetos que gerem impacto real por meio da tecnologia.
+              Busco constantemente aprimorar meus conhecimentos e contribuir para projetos que gerem impacto real, agregando valor por meio da tecnologia.
             </p>
             <div className="mt-8 pt-8 border-t border-[#1e1c1c]">
                 <h3 className="text-xl font-bold mb-4 text-[#1e1c1c]">Formação</h3>
