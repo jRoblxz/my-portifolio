@@ -4,9 +4,9 @@ import { useState } from "react";
 import BtnVoltar from "@/components/ui/BtnVoltar";
 
 import "@fontsource/league-spartan/400.css";
-// Importa pesos adicionais que você pretende usar (ex: 500, 700)
 import "@fontsource/league-spartan/500.css";
 import "@fontsource/league-spartan/700.css";
+import { Footer } from "@/pages/Homes/sections/Footer/Footer";
 
 export default function CTASection() {
   const [formData, setFormData] = useState({
@@ -43,11 +43,8 @@ export default function CTASection() {
     e.preventDefault();
     navigator.clipboard.writeText(email);
     setCopied(true);
-
-    // Volta ao estado normal após 2 segundosaad
     setTimeout(() => setCopied(false), 2000);
   };
-
 
   const contactInfo = [
     {
@@ -79,14 +76,15 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="py-24 bg-[#e4e0d7] relative overflow-hidden  font-spartan"
+      // AJUSTE 1: Removemos 'justify-between'. Mantemos apenas flex-col e min-h-screen.
+      className="bg-[#e4e0d7] relative overflow-hidden font-spartan min-h-screen flex flex-col"
     >
       <div className="absolute top-6 left-6 z-50">
         <BtnVoltar onClick={handleGoBack} />
       </div>
-      {/* Background Image */}
+
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           backgroundImage: "url(/cta-background.png)",
           backgroundSize: "cover",
@@ -94,8 +92,13 @@ export default function CTASection() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+      {/* AJUSTE 2: 
+          - Removido 'flex flex-col justify-center' (que causava o esmagamento).
+          - Mantido 'flex-grow' para empurrar o footer.
+          - Mantido 'py-24' para dar o respiro original nas bordas.
+      */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow py-24 w-full">
+        
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,8 +115,7 @@ export default function CTASection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Information */}
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -151,7 +153,6 @@ export default function CTASection() {
               );
             })}
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -181,26 +182,18 @@ export default function CTASection() {
                   </svg>
                 </a>
 
-                {/* Email Button (Lógica de Copiar) */}
                 <button
                   onClick={handleCopyEmail}
                   title={copied ? "E-mail copiado!" : "Copiar e-mail"}
                   className="cursor-pointer group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors border-none"
                 >
-                  {/* Lógica do Fundo:
-                  Se copied === true: Fundo verde e cheio (h-full).
-                  Se copied === false: Fundo vermelho e vazio (h-0), enche no hover (group-hover:h-full).
-                */}
                   <span
-                    className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out 
-                    ${
+                    className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out ${
                       copied
                         ? "bg-green-600 h-full"
                         : "bg-[#d00909] h-0 group-hover:h-full"
-                    }
-                  `}
+                    }`}
                   ></span>
-
                   <div className="relative z-10">
                     {copied ? (
                       <Check size={24} className="text-white animate-bounce" />
@@ -217,7 +210,7 @@ export default function CTASection() {
                   href="https://linkedin.com/in/joaoroblez"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="GitHub"
+                  aria-label="LinkedIn"
                   className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
                 >
                   <span className="absolute bottom-0 left-0 h-0 w-full bg-[#0A66C2] transition-all duration-300 ease-in-out group-hover:h-full"></span>
@@ -235,11 +228,12 @@ export default function CTASection() {
                     ></path>
                   </svg>
                 </a>
+
                 <a
                   href="https://www.instagram.com/joaoroblxz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="GitHub"
+                  aria-label="Instagram"
                   className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
                 >
                   <span className="absolute bottom-0 left-0 h-0 w-full bg-[linear-gradient(45deg,#405de6,#5b51db,#b33ab4,#c135b4,#e1306c,#fd1f1f)] transition-all duration-300 ease-in-out group-hover:h-full"></span>
@@ -261,7 +255,6 @@ export default function CTASection() {
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.form
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -330,6 +323,8 @@ export default function CTASection() {
           </motion.form>
         </div>
       </div>
+      
+      <Footer />
     </section>
   );
 }
