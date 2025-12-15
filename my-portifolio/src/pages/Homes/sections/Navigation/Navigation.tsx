@@ -13,7 +13,7 @@ export function Navigation({ activeSection, scrollToSection }: NavigationProps) 
   // CORREÇÃO: Os IDs aqui devem ser IGUAIS aos do App.tsx ('hero', 'about', 'skills', 'projects')
   const navItems = [
     { label: 'Início', id: 'hero' },
-    { label: 'Sobre', id: 'services' },
+    { label: 'Sobre', id: 'about' },
     { label: 'Skills', id: 'skills' },
     { label: 'Projetos', id: 'projects' },
   ];

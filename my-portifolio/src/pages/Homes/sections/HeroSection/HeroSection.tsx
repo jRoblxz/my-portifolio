@@ -90,7 +90,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                   hover:before:translate-x-full
                   w-33 h-10 justify-center font-spartan
                 "
-                onClick={() => scrollToSection('portfolio')}
+                onClick={() => scrollToSection('projects')}
               >
                 <span className="relative z-10 inline-flex items-center transition-colors duration-400">
                   Ver Projetos
@@ -196,7 +196,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               <img
                 src={avatarImg}
                 alt="João Pedro Costa Roblez"
-                className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-4 border-slate-800 shadow-2xl"
+                className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-4 border-black shadow-2xl"
               />
             </div>
           </motion.div>

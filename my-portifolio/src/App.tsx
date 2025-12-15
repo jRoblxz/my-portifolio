@@ -9,6 +9,7 @@ import { AboutSection } from './pages/Homes/sections/AboutSection/AboutSection';
 import { SkillsSection } from './pages/Homes/sections/Skills/SkillSection';
 import { ProjectsSection } from './pages/Homes/sections/ProjectsSection/ProjectSection';
 import { Footer } from './pages/Homes/sections/Footer/Footer';
+import BtnTop from '@/components/ui/BtnTop'
 // --- ADICIONE ESTAS LINHAS ---
 // Importa o peso padrão (400)
 import '@fontsource/league-spartan/400.css';
@@ -58,6 +59,7 @@ function App() {
         <ProjectsSection />
       </main>
       
+        <BtnTop onClick={() => scrollToSection('hero')}/>
       <Footer />
     </div>
   );
