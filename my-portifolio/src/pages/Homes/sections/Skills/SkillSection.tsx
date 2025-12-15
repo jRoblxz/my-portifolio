@@ -17,7 +17,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="min-h-screen flex items-center justify-center py-20 px-6"
+      className="min-h-screen flex items-center justify-center py-15 px-6"
     >
       <div className="container mx-auto max-w-4xl">
         <motion.div

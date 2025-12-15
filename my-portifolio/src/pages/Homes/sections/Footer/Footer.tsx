@@ -1,5 +1,6 @@
 // src/sections/Footer.tsx
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
@@ -13,9 +14,12 @@ export function Footer() {
           <a href="https://www.linkedin.com/in/joão-pedro-costa-roblez-a87077227/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
             <Linkedin size={20} />
           </a>
-          <a href="mailto:joaopedro@example.com" className="text-slate-400 hover:text-white transition-colors">
-            <Mail size={20} />
-          </a>
+          <Link to="/contact">
+            <a  className="text-slate-400 hover:text-white transition-colors">
+              <Mail size={20} />
+            </a>
+          </Link>
+          
         </div>
       </div>
     </footer>

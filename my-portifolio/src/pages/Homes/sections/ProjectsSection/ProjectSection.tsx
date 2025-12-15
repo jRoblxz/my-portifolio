@@ -22,8 +22,8 @@ const projects: Project[] = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <section id="projects" className="min-h-screen flex items-center justify-center py-15 px-6">
+      <div className="container mx-auto max-w-5xl ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

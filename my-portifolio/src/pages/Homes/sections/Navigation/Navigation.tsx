@@ -10,7 +10,6 @@ interface NavigationProps {
 export function Navigation({ activeSection, scrollToSection }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // CORREÇÃO: Os IDs aqui devem ser IGUAIS aos do App.tsx ('hero', 'about', 'skills', 'projects')
   const navItems = [
     { label: 'Início', id: 'hero' },
     { label: 'Sobre', id: 'about' },
@@ -38,27 +37,24 @@ export function Navigation({ activeSection, scrollToSection }: NavigationProps) 
     },
   };
 
-  // CORREÇÃO: Em vez de navigate('/'), usamos o scroll para o topo
-  // const handleHomeClick = () => {
-  //   scrollToSection('hero');
-  // };
+  // Função auxiliar para lidar com o clique no mobile
+  const handleMobileClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault(); // Previne comportamentos estranhos do navegador
+    scrollToSection(id);
+    
+    // Pequeno delay para fechar o menu. Isso permite que o scroll inicie
+    // antes que o menu colapse, evitando bugs visuais.
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 150); 
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-[#1e1c1c] shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-end items-e h-16">
-          {/* Logo */}
-          {/* <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
-          >
-            <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16 flex items-center">
-              <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto object-contain" />
-            </span>
-          </motion.div> */}
-
+        {/* CORREÇÃO: 'items-e' corrigido para 'items-center' */}
+        <div className="flex justify-end items-center h-16">
+          
           {/* Desktop Navigation */}
           <motion.div
             variants={containerVariants}
@@ -115,10 +111,8 @@ export function Navigation({ activeSection, scrollToSection }: NavigationProps) 
               <motion.button
                 key={item.label}
                 variants={itemVariants}
-                onClick={() => {
-                  scrollToSection(item.id);
-                  setIsOpen(false);
-                }}
+                // AQUI ESTÁ A CORREÇÃO PRINCIPAL:
+                onClick={(e) => handleMobileClick(e, item.id)}
                 className={`text-left font-medium transition-colors duration-300 
                   ${activeSection === item.id ? 'text-[#7c3aed]' : 'text-[#e4e0d7]'}
                 `}
