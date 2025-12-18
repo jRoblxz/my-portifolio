@@ -79,6 +79,8 @@ export interface Translation {
       namePlaceholder: string;
       emailLabel: string;
       emailPlaceholder: string;
+      SubjectLabel: string;
+      SubjectPlaceholder: string;
       messageLabel: string;
       messagePlaceholder: string;
       btnSubmit: string;
@@ -192,6 +194,8 @@ export const translations: Record<Language, Translation> = {
         namePlaceholder: 'Seu nome',
         emailLabel: 'Email',
         emailPlaceholder: 'seu@email.com',
+        SubjectLabel: 'Assunto',
+        SubjectPlaceholder: 'Digite o assunto...',
         messageLabel: 'Mensagem',
         messagePlaceholder: 'Descreva seu projeto...',
         btnSubmit: 'Enviar Mensagem'
@@ -304,6 +308,8 @@ export const translations: Record<Language, Translation> = {
         namePlaceholder: 'Your name',
         emailLabel: 'Email',
         emailPlaceholder: 'your@email.com',
+        SubjectLabel: 'Subject',
+        SubjectPlaceholder: 'Enter the subject...',
         messageLabel: 'Message',
         messagePlaceholder: 'Describe your project...',
         btnSubmit: 'Send Message'
