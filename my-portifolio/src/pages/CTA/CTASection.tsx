@@ -38,7 +38,8 @@ export default function CTASection() {
     setSuccess(false);
 
     try {
-      const response = await fetch("/api/vendor/contact.php", {
+      // const response = await fetch("/api/vendor/contact.php", {
+      const response = await fetch("https://joaoroblez.sparklab.dev.br/api/contact.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
