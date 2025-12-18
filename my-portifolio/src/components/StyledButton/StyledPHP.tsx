@@ -37,9 +37,9 @@ const Button = () => {
                     gradientTransform="translate(26.52 -9.307)"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#fff" />
-                    <stop offset="0.5" stop-color="#4c6b96" />
-                    <stop offset="1" stop-color="#231f20" />
+                    <stop offset="0" stopColor="#fff" />
+                    <stop offset="0.5" stopColor="#4c6b96" />
+                    <stop offset="1" stopColor="#231f20" />
                   </radialGradient>
                 </defs>
                 <title>file_type_php</title>

@@ -1,79 +1,49 @@
-import { Box, Container, Grid, Typography, styled } from "@mui/material";
-import ProjectCard, { type ProjectCardProps } from "../../../../components/ProjectCard/ProjectCard";
-import AnimationComponent from "../../../../components/AnimationComponent/AnimationComponent";
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const ProjectsSection: React.FC = () => {
+export function ProjectsSection() {
+  const { t } = useLanguage();
 
-    const StyledExperience = styled("div")(({ theme }) => ({
-        backgroundColor: theme.palette.primary.main,
-
-    }));
-
-    const projects = [
-        {
-            title: "Project Exemple",
-            subtitle: "Jul 2023 - Dez 2023",
-            srcImg: "/src/assets/images/project-trello.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras porta semper velit vel rutrum. Aliquam vulputate, nisi eget tristique mattis, nisi sem faucibus eros, a auctor felis sem ut mauris. Phasellus a ultrices elit. Curabitur ut diam eu orci auctor pretium.",
-            technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-            websiteURL: "https://trello.com/",
-            codeURL: "https://github.com/",
-        },
-        {
-            title: "Project Exemple",
-            subtitle: "Jul 2023 - Dez 2023",
-            srcImg: "/src/assets/images/project-financas.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras porta semper velit vel rutrum. Aliquam vulputate, nisi eget tristique mattis, nisi sem faucibus eros, a auctor felis sem ut mauris. Phasellus a ultrices elit. Curabitur ut diam eu orci auctor pretium.",
-            technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-            websiteURL: "https://trello.com/",
-            codeURL: "https://github.com/",
-        },
-        {
-            title: "Project Craze Maze",
-            subtitle: "Jul 2019 - May 2019",
-            srcImg: "/src/assets/images/project1-craze-maze.gif",
-            description: "Game to escape the maze, but not only that. An algorithm has been created that randomly generates a new maze each time the game is started. In this game, the user can use the keyboard keys to move until they find the flag and win the game",
-            technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-            websiteURL: "https://adrianasaty.github.io/ironhack-project1-craze-maze/index.html",
-            codeURL: "https://github.com/AdrianaSaty/ironhack-project1-craze-maze",
-        },
-        {
-            title: "Project Blotting",
-            subtitle: "Jul 2019 - May 2019",
-            srcImg: "/src/assets/images/project2-blotting.png",
-            description: "Game to escape the maze, but not only that. An algorithm has been created that randomly generates a new maze each time the game is started. In this game, the user can use the keyboard keys to move until they find the flag and win the game",
-            technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-            websiteURL: "https://adrianasaty.github.io/ironhack-project1-craze-maze/index.html",
-            codeURL: "https://github.com/AdrianaSaty/ironhack-project1-craze-maze",
-        },
-    ]
-
-    return (
-        <StyledExperience>
-            <Container maxWidth="lg">
-                <Box id="projects" pt={5} pb={3}>
-                    <Typography variant="h2" textAlign="center" color="primary.contrastText">Projects</Typography>
-                </Box>
-                <Grid container spacing={5} pb={3}>
-                    {projects.map((project: ProjectCardProps, index: number) => (
-                        <Grid size={{ md: 6 }} key={index}>
-                            <AnimationComponent moveDirection={index % 2 == 0 ? "right" : "left"}>
-                                <ProjectCard
-                                    title={project.title}
-                                    subtitle={project.subtitle}
-                                    srcImg={project.srcImg}
-                                    description={project.description}
-                                    technologies={project.technologies}
-                                    websiteURL={project.websiteURL}
-                                    codeURL={project.codeURL}
-                                />
-                            </AnimationComponent>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-        </StyledExperience>
-    )
+  return (
+    <section id="projects" className="min-h-screen flex items-center justify-center py-15 px-6">
+      <div className="container mx-auto max-w-5xl ">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+            {t.projects.title}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            {t.projects.list.map((project, index) => (
+              <motion.div
+                key={index}
+                className="bg-[#e4e0d7] backdrop-blur-sm rounded-2xl p-6 border border-slate-800 shadow-xl hover:shadow-[#7C3AED]  transition-shadow duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-semibold mb-3 text-[#1e1c1c]">{project.title}</h3>
+                <p className="text-[#1e1c1c] mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="px-3 py-1 text-xs font-medium bg-[#1e1c1c] text-[#e4e0d7] rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#1e1c1c] hover:text-[#7C3AED]  transition-colors font-medium">
+                  {t.projects.btnGithub} <ExternalLink size={16} className="ml-1" />
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
-
-export default ProjectsSection
