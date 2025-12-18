@@ -60,3 +60,19 @@ jobs:
             .htaccess
             config.php
             config.js
+      
+      # 5️⃣ Deploy do BACKEND (PHP API)
+      - name: 🐘 Deploy Backend (PHP API)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_SENHA }}
+          local-dir: ./Portifolio-Api/
+          server-dir: /public_html/joaoroblez/api/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/.env
+            **/node_modules/**
+            **/storage/**
