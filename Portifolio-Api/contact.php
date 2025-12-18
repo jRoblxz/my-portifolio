@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
   echo json_encode(["success" => false, "message" => "Método não permitido"]);
   exit;
-}
-
-require __DIR__ . '/PHPMailer/PHPMailer.php';
-require __DIR__ . '/PHPMailer/SMTP.php';
-require __DIR__ . '/PHPMailer/Exception.php';
+ }
+ require __DIR__ . '/vendor/autoload.php';
+// require __DIR__ . '/PHPMailer/PHPMailer.php';
+// require __DIR__ . '/PHPMailer/SMTP.php';
+// require __DIR__ . '/PHPMailer/Exception.php';
 
 $config = require __DIR__ . '/config.php';
 
@@ -31,14 +31,14 @@ $mail = new PHPMailer(true);
 
 try {
   $mail->isSMTP();
-  $mail->Host = $config['SMTP_HOST'];
+  $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = $config['SMTP_USER'];
-  $mail->Password = $config['SMTP_PASS'];
+  $mail->Username = 'joaoroblez76@gmail.com';
+  $mail->Password = 'tnpc bdcd ihrr sxcv';
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-  $mail->Port = $config['SMTP_PORT'];
+  $mail->Port = 587;
 
-  $mail->setFrom($config['SMTP_USER'], 'Portfólio - Contato');
+  $mail->setFrom('joaoroblez76@gmail.com', 'Portfólio - Contato');
   $mail->addReplyTo($email, $name);
   $mail->addAddress('joaoroblez@sparklab.dev.br');
 
