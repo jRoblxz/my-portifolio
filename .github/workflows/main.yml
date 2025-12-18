@@ -26,10 +26,11 @@ jobs:
         with:
           node-version: '20' # Não roda a instalação aqui, fazemos no passo 3
 
-      # 3. CRÍTICO: Instala o PNPM globalmente e o utiliza
+      # 3. CRÍTICO: Instala o PNPM globalmente e o utilizaa
       # Usamos 'shell: bash' para garantir que o comando export seja executado.
       - name: 📦 Install NPM and Build
         shell: bash
+        working-directory: ./my-portifolio
         run: |
           # Instala o pnpm globalmente e força a atualização do PATH
           npm install 

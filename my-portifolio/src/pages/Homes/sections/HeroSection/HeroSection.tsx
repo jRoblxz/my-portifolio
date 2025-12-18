@@ -1,15 +1,29 @@
 // src/sections/HeroSection.tsx
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, Check, Linkedin, Instagram, Github } from "lucide-react"; // Importando Check e Mail
 import { Button } from "@/components/ui/button";
 import Typewriter from "@/components/Typewriter/Typewriter";
 import avatarImg from "@/assets/Images/joao.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
 }
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) {
+  const [copied, setCopied] = useState(false);
+  const email = "joaoroblez@sparklab.dev.br";
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+
+    // Volta ao estado normal após 2 segundosaad
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section
       id="hero"
@@ -17,13 +31,15 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
     >
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Coluna da Esquerda: Textos */}
           <motion.div
+            className="md:pl-12 lg:pl-24 xl:pl-32"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4"
+              className="text-5xl md:text-7xl font-bold mb-4 font-spartan"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -34,6 +50,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                 Costa Roblez
               </span>
             </motion.h1>
+
             <motion.p
               className="text-2xl md:text-3xl text-[#e4e0d7] font-light mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -42,8 +59,9 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
             >
               <Typewriter text="Software Developer" delay={120} />
             </motion.p>
+
             <motion.p
-              className="text-lg text-[#e4e0d7] mb-8 max-w-xl"
+              className="text-lg text-[#e4e0d7] mb-8 max-w-xl font-chocolates"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -51,12 +69,37 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               Estudante de Análise e Desenvolvimento de Sistemas na Fatec,
               apaixonado por criar soluções tecnológicas inovadoras.
             </motion.p>
+
+            {/* Botões de Ação */}
             <motion.div
               className="flex gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
+              <Link to="/contact">
+                <Button
+                  className="
+                  relative overflow-hidden rounded-[0.5em] border-none 
+                  bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] 
+                  font-medium text-[#1e1c1c] tracking-wider 
+                  cursor-pointer
+                  transition-transform duration-150 ease-in-out active:scale-95
+                  before:content-[''] before:absolute before:top-0 before:left-[-10%] 
+                  before:w-[120%] before:h-full before:bg-[#e4e0d7] hover:text-[#e4e0d7] before:skew-x-[30deg] 
+                  before:z-0 before:transition-transform before:duration-400 
+                  before:ease-[cubic-bezier(0.3,1,0.8,1)]
+                  hover:before:translate-x-full
+                  w-33 h-10 justify-center font-spartan
+                "
+                  onClick={() => scrollToSection("projects")}
+                >
+                  <span className="relative z-10 inline-flex items-center transition-colors duration-400">
+                    Contato
+                  </span>
+                </Button>
+              </Link>
+
               <Button
                 className="
                   relative overflow-hidden rounded-[0.5em] border-none 
@@ -64,97 +107,101 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                   font-medium text-[#1e1c1c] tracking-wider 
                   cursor-pointer
                   transition-transform duration-150 ease-in-out active:scale-95
-                  
                   before:content-[''] before:absolute before:top-0 before:left-[-10%] 
                   before:w-[120%] before:h-full before:bg-[#e4e0d7] hover:text-[#e4e0d7] before:skew-x-[30deg] 
                   before:z-0 before:transition-transform before:duration-400 
                   before:ease-[cubic-bezier(0.3,1,0.8,1)]
-                  
                   hover:before:translate-x-full
-
                   w-33 h-10 justify-center
+                  font-spartan
                 "
-                onClick={() => scrollToSection('portfolio')}
+                onClick={() => scrollToSection("about")}
               >
-                <span
-                  className="relative z-10 inline-flex items-center                     
-                    transition-colors duration-400
-                  "
-                >
-                  Ver Projetos
-                </span>
-              </Button>
-              <Button
-                className="
-                  relative overflow-hidden rounded-[0.5em] border-none 
-                  bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] 
-                  font-medium text-[#1e1c1c] tracking-wider 
-                  cursor-pointer
-                  transition-transform duration-150 ease-in-out active:scale-95
-                  
-                  before:content-[''] before:absolute before:top-0 before:left-[-10%] 
-                  before:w-[120%] before:h-full before:bg-[#e4e0d7] hover:text-[#e4e0d7] before:skew-x-[30deg] 
-                  before:z-0 before:transition-transform before:duration-400 
-                  before:ease-[cubic-bezier(0.3,1,0.8,1)]
-                  
-                  hover:before:translate-x-full
-
-                  w-33 h-10 justify-center
-                "
-                onClick={() => scrollToSection('portfolio')}
-              >
-                <span
-                  className="relative z-10 inline-flex items-center                     
-                    transition-colors duration-400
-                  "
-                >
+                <span className="relative z-10 inline-flex items-center transition-colors duration-400 font-spartan">
                   Sobre mim
                 </span>
               </Button>
             </motion.div>
+
+            {/* Ícones Sociais */}
             <motion.div
               className="flex gap-4 mt-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
             >
+              {/* GitHub Button */}
               <a
-                href="https://github.com/jRoblxz" // URL correta
+                href="https://github.com/jRoblxz"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Spotify"
-                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors" // Container principal
+                aria-label="GitHub"
+                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
               >
-                {/* Elemento de fundo que fará a animação */}
+                <span className="absolute bottom-0 left-0 h-0 w-full bg-[#24262a] transition-all duration-300 ease-in-out group-hover:h-full"></span>
+                <Github className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white" size={20} />
+              </a>
+
+              {/* Email Button (Lógica de Copiar) */}
+              <button
+                onClick={handleCopyEmail}
+                title={copied ? "E-mail copiado!" : "Copiar e-mail"}
+                className="cursor-pointer group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors border-none"
+              >
+                {/* Lógica do Fundo:
+                  Se copied === true: Fundo verde e cheio (h-full).
+                  Se copied === false: Fundo vermelho e vazio (h-0), enche no hover (group-hover:h-full).
+                */}
                 <span
-                  className="absolute bottom-0 left-0 h-0 w-full bg-[#24262a] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
+                  className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out 
+                    ${
+                      copied
+                        ? "bg-green-600 h-full"
+                        : "bg-[#d00909] h-0 group-hover:h-full"
+                    }
+                  `}
                 ></span>
 
-                {/* O Ícone SVG */}
-                <svg
-                  className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white" // Ícone fica acima do fundo
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </a>
+                <div className="relative z-10">
+                  {copied ? (
+                    <Check size={24} className="text-white animate-bounce" />
+                  ) : (
+                    <Mail
+                      size={24}
+                      className="text-slate-400 transition-colors group-hover:text-white"
+                    />
+                  )}
+                </div>
+              </button>
+
+              {/* GitHub LinkedIn */}
               <a
-                href="mailto:joaopedro@example.com"
-                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212]  transition-colors"
+                href="https://linkedin.com/in/joaoroblez"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkediIn"
+                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
               >
-                <span
-                  className="absolute bottom-0 left-0 h-0 w-full bg-[#d00909] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
-                ></span>
-                <Mail
-                  className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white"
-                  size={24}
-                />
+                <span className="absolute bottom-0 left-0 h-0 w-full bg-[#0A66C2] transition-all duration-300 ease-in-out group-hover:h-full"></span>
+                
+                <Linkedin className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white" size={20} />
+              </a>
+
+              {/* GitHub Instagram */}
+              <a
+                href="https://www.instagram.com/joaoroblxz"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
+              >
+                <span className="absolute bottom-0 left-0 h-0 w-full bg-[linear-gradient(45deg,#405de6,#5b51db,#b33ab4,#c135b4,#e1306c,#fd1f1f)] transition-all duration-300 ease-in-out group-hover:h-full"></span>
+                <Instagram className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white" size={20} />
               </a>
             </motion.div>
           </motion.div>
+
+          {/* Coluna da Direita: Imagem/Avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -177,7 +224,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               <img
                 src={avatarImg}
                 alt="João Pedro Costa Roblez"
-                className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-4 border-slate-800 shadow-2xl"
+                className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-4 border-black shadow-2xl"
               />
             </div>
           </motion.div>
