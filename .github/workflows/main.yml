@@ -70,6 +70,8 @@ jobs:
       - name: 📦 Install Composer dependencies
         working-directory: ./Portifolio-Api
         run: |
+          # Remove a vendor local antiga para garantir instalação limpa
+          rm -rf vendor 
           composer install --no-dev --optimize-autoloader
 
       # 5️⃣ Deploy do BACKEND (PHP API)
