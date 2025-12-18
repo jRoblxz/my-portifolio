@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import GitHubIcon from '@/assets/Images/github.png'
+import GitHubIcon from '@/assets/images/github.png'
 
 // interface Skill {
 //   name: string;

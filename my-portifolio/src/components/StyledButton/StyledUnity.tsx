@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import UnityIcon from '@/assets/Images/unity.png'
+import UnityIcon from '@/assets/images/unity.png'
 
 // interface Skill {
 //   name: string;
