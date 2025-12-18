@@ -1,20 +1,28 @@
 <?php
+// --- MODO DE DEBUG (REMOVA DEPOIS DE FUNCIONAR) ---
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// --------------------------------------------------
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Habilita CORS para seu domínio React poder chamar o PHP
+header("Access-Control-Allow-Origin: *"); // Ou coloque seu domínio: https://seu-portfolio.com
+header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  http_response_code(405);
-  echo json_encode(["success" => false, "message" => "Método não permitido"]);
-  exit;
- }
- require __DIR__ . '/vendor/autoload.php';
-// require __DIR__ . '/PHPMailer/PHPMailer.php';
-// require __DIR__ . '/PHPMailer/SMTP.php';
-// require __DIR__ . '/PHPMailer/Exception.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$config = require __DIR__ . '/config.php';
+// COMENTADO POIS PODE ESTAR FALTANDO NO SERVIDOR
+// $config = require __DIR__ . '/config.php'; 
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(["success" => false, "message" => "Método não permitido"]);
+    exit;
+}
 
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
@@ -22,39 +30,54 @@ $subject = trim($_POST['Subject'] ?? 'Contato do Portfólio');
 $message = trim($_POST['message'] ?? '');
 
 if (!$name || !$email || !$message) {
-  http_response_code(400);
-  echo json_encode(["success" => false, "message" => "Campos inválidos"]);
-  exit;
+    http_response_code(400);
+    echo json_encode(["success" => false, "message" => "Preencha todos os campos obrigatórios."]);
+    exit;
 }
 
 $mail = new PHPMailer(true);
 
 try {
-  $mail->isSMTP();
-  $mail->Host = 'smtp.gmail.com';
-  $mail->SMTPAuth = true;
-  $mail->Username = 'joaoroblez76@gmail.com';
-  $mail->Password = 'tnpc bdcd ihrr sxcv';
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-  $mail->Port = 587;
+    // Configurações do Servidor
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'joaoroblez76@gmail.com';
+    
+    // AQUI VAI A SENHA DE APP DO GOOGLE (Não é a senha de login!)
+    $mail->Password   = 'tnpc bdcd ihrr sxcv'; 
+    
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
 
-  $mail->setFrom('joaoroblez76@gmail.com', 'Portfólio - Contato');
-  $mail->addReplyTo($email, $name);
-  $mail->addAddress('joaoroblez@sparklab.dev.br');
+    // Destinatários
+    $mail->setFrom('joaoroblez76@gmail.com', 'Portfólio Contato');
+    $mail->addReplyTo($email, $name); // Quem preencheu o formulário
+    $mail->addAddress('joaoroblez@sparklab.dev.br'); // Para onde vai o email
 
-  $mail->isHTML(true);
-  $mail->CharSet = 'UTF-8';
-  $mail->Subject = $subject;
-  $mail->Body = "
-    <strong>Nome:</strong> {$name}<br>
-    <strong>Email:</strong> {$email}<br><br>
-    <strong>Mensagem:</strong><br>{$message}
-  ";
+    // Conteúdo
+    $mail->isHTML(true);
+    $mail->CharSet = 'UTF-8';
+    $mail->Subject = $subject;
+    $mail->Body    = "
+        <h2>Novo contato do Portfólio</h2>
+        <p><strong>Nome:</strong> {$name}</p>
+        <p><strong>Email:</strong> {$email}</p>
+        <p><strong>Assunto:</strong> {$subject}</p>
+        <hr>
+        <p><strong>Mensagem:</strong><br>{$message}</p>
+    ";
 
-  $mail->send();
+    $mail->send();
 
-  echo json_encode(["success" => true]);
+    echo json_encode(["success" => true, "message" => "Email enviado com sucesso!"]);
+
 } catch (Exception $e) {
-  http_response_code(500);
-  echo json_encode(["success" => false, "message" => "Erro ao enviar email"]);
+    http_response_code(500);
+    // Retorna o erro real do PHPMailer para ajudar no debug
+    echo json_encode([
+        "success" => false, 
+        "message" => "Erro ao enviar: " . $mail->ErrorInfo
+    ]);
 }
+?>
