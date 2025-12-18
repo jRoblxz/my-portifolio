@@ -5,23 +5,24 @@ use PHPMailer\PHPMailer\Exception;
 
 header("Content-Type: application/json");
 
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
     exit;
 }
 
-$data = json_decode(file_get_contents("php://input"), true);
-
-$name = trim($data['name'] ?? '');
-$email = trim($data['email'] ?? '');
-$Subject = trim($data['Subject'] ?? '');
-$message = trim($data['message'] ?? '');
+$name = trim($_POST['name'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$subject = trim($_POST['Subject'] ?? 'Contato do Portfólio');
+$message = trim($_POST['message'] ?? '');
 
 if (!$name || !$email || !$message) {
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "Campos inválidos"]);
+    echo json_encode([
+        "success" => false,
+        "message" => "Campos obrigatórios não preenchidos"
+    ]);
     exit;
 }
 
@@ -29,13 +30,12 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host = $config['smtp_host'];
+    $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = $config['smtp_user'];
-    $mail->Password = $config['smtp_pass'];
+    $mail->Username = 'joaoroblez76@gmail.com';
+    $mail->Password = 'tnpc bdcd ihrr sxcv';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $config['smtp_port'];
-    
+    $mail->Port = 587;
 
     $mail->setFrom('joaoroblez76@gmail.com', 'Portfólio - Contato');
     $mail->addReplyTo($email, $name);
@@ -43,21 +43,24 @@ try {
 
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
-    $mail->Subject = $Subject;
+    $mail->Subject = $subject;
     $mail->Body = "
-    <strong>Nome:</strong> {$name}<br>
-    <strong>Email:</strong> {$email}<br><br>
-    <strong>Assunto:</strong> {$Subject}<br><br>
-    <strong>Mensagem:</strong><br>
-    {$message}
-  ";
+        <strong>Nome:</strong> {$name}<br>
+        <strong>Email:</strong> {$email}<br><br>
+        <strong>Assunto:</strong> {$subject}<br><br>
+        <strong>Mensagem:</strong><br>
+        {$message}
+    ";
 
-    $mail->AltBody = "Nome: $name\nEmail: $email\nAssunto: $Subject\nMensagem: $message";
+    $mail->AltBody = "Nome: $name\nEmail: $email\nAssunto: $subject \nMensagem: $message";
 
     $mail->send();
 
     echo json_encode(["success" => true]);
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erro ao enviar email"]);
+    echo json_encode([
+        "success" => false,
+        "message" => "Erro ao enviar email"
+    ]);
 }

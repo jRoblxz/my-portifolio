@@ -38,31 +38,67 @@ export default function CTASection() {
     setSuccess(false);
 
     try {
-      // const response = await fetch("/api/vendor/contact.php", {
-      const response = await fetch("https://joaoroblez.sparklab.dev.br/api/contact.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-        },
-        body: JSON.stringify(formData),
-      });
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("message", formData.message);
+
+      const response = await fetch(
+        "https://joaoroblez.sparklab.dev.br/api/contact.php",
+        {
+          method: "POST",
+          body: form,
+        }
+      );
 
       const data = await response.json();
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Erro ao enviar mensagem");
+      if (!data.success) {
+        throw new Error(data.message || "Erro ao enviar");
       }
 
       setSuccess(true);
       setFormData({ name: "", email: "", Subject: "", message: "" });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   setLoading(true);
+  //   setError(null);
+  //   setSuccess(false);
+
+  //   try {
+  //     // const response = await fetch("/api/vendor/contact.php", {
+  //     const response = await fetch("https://joaoroblez.sparklab.dev.br/api/contact.php", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "X-Requested-With": "XMLHttpRequest",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (!response.ok || !data.success) {
+  //       throw new Error(data.message || "Erro ao enviar mensagem");
+  //     }
+
+  //     setSuccess(true);
+  //     setFormData({ name: "", email: "", Subject: "", message: "" });
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   } catch (err: any) {
+  //     setError(err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleGoBack = () => {
     if (typeof window !== "undefined") {
