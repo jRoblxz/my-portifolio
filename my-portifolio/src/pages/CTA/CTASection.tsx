@@ -50,7 +50,8 @@ export default function CTASection() {
           body: form,
         }
       );
-
+      const text = await response.text();
+      console.log(text);
       const data = await response.json();
 
       if (!data.success) {

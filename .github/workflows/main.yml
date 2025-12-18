@@ -46,7 +46,6 @@ jobs:
           server-dir: /public_html/joaoroblez/
           exclude: |
             public/**
-            vendor/**
             plugin/**
             Banco_de_Dados_CR/**
             crons/**
