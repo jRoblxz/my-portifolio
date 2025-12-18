@@ -51,8 +51,11 @@ export default function CTASection() {
           body: form,
         }
       );
-      const text = await response.text();
-      console.log(text);
+
+      if (!response.ok) {
+        throw new Error("Erro no servidor");
+      }
+
       const data = await response.json();
 
       if (!data.success) {
