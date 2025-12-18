@@ -3,7 +3,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-import imgVictor from '@/assets/images/victor.almeida.png';
+import imgVictor from '@/assets/images/victor.png';
 import SocialButton from '@/components/ui/LinkedInBtn';
 
 export function LinkedInRecommendations() {
