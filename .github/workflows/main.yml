@@ -1,35 +1,43 @@
-name: 🚀 Deploy Portfólio (React + PHP API)
+name: 🚀 Deploy website on push
 
 on:
   push:
     branches:
       - main
+  # Removendo pull_request se o deploy não deve ocorrer ao abrir um PR.
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - Dev
 
 jobs:
-  deploy:
-    name: 🎉 Build & Deploy
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Checkout
+      
+      # 1. Obter o Código (Step Corrigida)
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
-
-      # 2️⃣ Node para build do React
-      - name: 🛠️ Setup Node.js
+      
+      # 2. Configurar o Node.js e PNPM (Juntos)
+      - name: 🛠️ Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20' # Não roda a instalação aqui, fazemos no passo 3
 
-      # 3️⃣ Instalar dependências e buildar React
-      - name: 📦 Build React (Vite)
+      # 3. CRÍTICO: Instala o PNPM globalmente e o utilizaa
+      # Usamos 'shell: bash' para garantir que o comando export seja executado.
+      - name: 📦 Install NPM and Build
+        shell: bash
         working-directory: ./my-portifolio
         run: |
-          npm install
+          # Instala o pnpm globalmente e força a atualização do PATH
+          npm install 
           npm run build
 
-      # 4️⃣ Deploy do FRONTEND (React)
-      - name: 🌐 Deploy Frontend (React)
+      # 5. Fazer o Deploy do Conteúdo da pasta 'dist'
+      - name: 📂 Sync files (FTP Deploy)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -38,22 +46,17 @@ jobs:
           local-dir: ./my-portifolio/dist/
           server-dir: /public_html/joaoroblez/
           exclude: |
-            **/.git*
-            **/.github/**
-            **/node_modules/**
-
-      # 5️⃣ Deploy do BACKEND (PHP API)
-      - name: 🐘 Deploy Backend (PHP API)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_SENHA }}
-          local-dir: ./Portifolio-Api/
-          server-dir: /public_html/joaoroblez/api/
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/.env
-            **/node_modules/**
-            **/storage/**
+            public/**
+            vendor/**
+            plugin/**
+            Banco_de_Dados_CR/**
+            crons/**
+            storage/**
+            .github
+            .github/**
+            .env
+            composer.json
+            composer.lock
+            .htaccess
+            config.php
+            config.js
