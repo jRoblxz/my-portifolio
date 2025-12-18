@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Check, Linkedin, Instagram, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Typewriter from "@/components/Typewriter/Typewriter";
-import avatarImg from "@/assets/Images/joao.png";
+import avatarImg from "@/assets/images/joao.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext"; // Importar
