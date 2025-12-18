@@ -41,6 +41,7 @@ export default function CTASection() {
       const form = new FormData();
       form.append("name", formData.name);
       form.append("email", formData.email);
+      form.append("Subject", formData.Subject);
       form.append("message", formData.message);
 
       const response = await fetch(
