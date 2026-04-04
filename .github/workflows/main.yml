@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-  # Removendo pull_request se o deploy não deve ocorrer ao abrir um PR.
-  # pull_request:
-  #   branches:
-  #     - main
   #     - Dev
 
 jobs:
@@ -15,27 +11,25 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      # 1. Obter o Código (Step Corrigida)
+      # 1. Obter o Código
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      # 2. Configurar o Node.js e PNPM (Juntos)
+      # 2. Configurar o Node.js e PNPM
       - name: 🛠️ Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # Não roda a instalação aqui, fazemos no passo 3
+          node-version: "20"
 
-      # 3. CRÍTICO: Instala o NPM globalmente e o utilizaa
-      # Usamos 'shell: bash' para garantir que o comando export seja executado.
+      # 3. Instala o NPM
       - name: 📦 Install NPM and Build
         shell: bash
         working-directory: ./my-portifolio
         run: |
-          # Instala o pnpm globalmente e força a atualização do PATH
           npm install 
           npm run build
 
-      # 5. Fazer o Deploy do Conteúdo da pasta 'dist'
+      # 5. Fazer o Deploy do Conteúdo da pasta
       - name: 📂 Sync files (FTP Deploy)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -66,15 +60,14 @@ jobs:
           php-version: '8.2'
           tools: composer
 
-      # 6️⃣ Install Composer dependencies (PHPMailer)aa
+      # 6️⃣ Install Composer dependencies (PHPMailer)
       - name: 📦 Install Composer dependencies
         working-directory: ./Portifolio-Api
         run: |
-          # Remove a vendor local antiga para garantir instalação limpa
           rm -rf vendor 
           composer install --no-dev --optimize-autoloader
 
-      # 5️⃣ Deploy do BACKEND (PHP API)
+      # 5️⃣ Deploy do BACKEND
       - name: 🐘 Deploy Backend (PHP API)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

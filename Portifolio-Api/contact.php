@@ -1,22 +1,19 @@
 <?php
-// --- MODO DE DEBUG (REMOVA DEPOIS DE FUNCIONAR) ---
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// --------------------------------------------------
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Habilita CORS para seu domínio React poder chamar o PHP
-header("Access-Control-Allow-Origin: *"); // Ou coloque seu domínio: https://seu-portfolio.com
+
+header("Access-Control-Allow-Origin: *"); 
 header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
 
 require __DIR__ . '/vendor/autoload.php';
 
-// COMENTADO POIS PODE ESTAR FALTANDO NO SERVIDOR
-// $config = require __DIR__ . '/config.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
