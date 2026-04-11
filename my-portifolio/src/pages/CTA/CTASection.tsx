@@ -364,7 +364,7 @@ export default function CTASection() {
 
             <div>
               <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.SubjectLabel}
+                {t.contact.form.subjectLabel}
               </label>
               <motion.input
                 whileFocus={{ scale: 1.02 }}
@@ -374,7 +374,7 @@ export default function CTASection() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.SubjectPlaceholder}
+                placeholder={t.contact.form.subjectPlaceholder}
               />
             </div>
 

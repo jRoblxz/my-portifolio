@@ -104,6 +104,6 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
-
+vendor/
 
 config.php

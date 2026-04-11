@@ -15,8 +15,8 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      # 2. Configurar o Node.js e PNPM
-      - name: 🛠️ Setup Node.js and PNPM
+      # 2. Configurar o Node.js e NPM
+      - name: 🛠️ Setup Node.js and NPM
         uses: actions/setup-node@v4
         with:
           node-version: "20"
