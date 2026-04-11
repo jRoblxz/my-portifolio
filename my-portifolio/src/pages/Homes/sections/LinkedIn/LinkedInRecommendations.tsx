@@ -86,7 +86,7 @@ export function LinkedInRecommendations() {
                 "{rec.text}"
               </p>
 
-              <SocialButton onClick={() => window.open('https://linkedin.com')} />
+              <SocialButton onClick={() => window.open('https://www.linkedin.com/in/joaoroblez/')} />
             </GlassmorphicCard>
           ))}
         </div>

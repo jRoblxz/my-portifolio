@@ -79,11 +79,11 @@ export function Home() {
 
       <main>
         <HeroSection scrollToSection={scrollToSection} />
-        <AboutSection />
+        <AboutSection />        
+        <ProjectsSection />
         <SkillsSection />
         <WorkExperience />
         <LinkedInRecommendations />
-        <ProjectsSection />
       </main>
       
         <BtnTop onClick={() => scrollToSection('hero')}/>

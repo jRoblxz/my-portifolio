@@ -1,4 +1,7 @@
 // src/i18n/locales.ts
+import Peneira from '@/assets/images/peneiras.png';
+import Tracking from '@/assets/images/tracking.png';
+import KpopGame from '@/assets/images/kpopgame.png';
 
 export type Language = 'pt' | 'en';
 
@@ -7,6 +10,8 @@ export interface Project {
   description: string;
   technologies: string[];
   link: string;
+  siteLink?: string;
+  image?: string;
 }
 
 export interface Experience {
@@ -29,8 +34,8 @@ export interface Translation {
     home: string;
     about: string;
     skills: string;
-    experience: string,
-    recommendations: string,
+    experience: string;
+    recommendations: string;
     projects: string;
     contact: string;
   };
@@ -67,6 +72,7 @@ export interface Translation {
   projects: {
     title: string;
     btnGithub: string;
+    btnLink: string;
     list: Project[];
   };
   contact: {
@@ -79,8 +85,8 @@ export interface Translation {
       namePlaceholder: string;
       emailLabel: string;
       emailPlaceholder: string;
-      SubjectLabel: string;
-      SubjectPlaceholder: string;
+      subjectLabel: string;
+      subjectPlaceholder: string;
       messageLabel: string;
       messagePlaceholder: string;
       btnSubmit: string;
@@ -154,7 +160,7 @@ export const translations: Record<Language, Translation> = {
           company: 'Alimentos Wuilson',
           period: '2023 - 2025 (SET)',
           location: 'Regente Feijó, SP',
-          description: 'Responsável pela logística reversa, controlando retorno e autorizações de devoluções, baixa de notas fiscais de devoluções, atualização e alimentação de planilha de controle de devolução, relatório de devoluções, reposição de faltas e avarias nos clientes e transportadoras. Também auxiliando o setor de faturamento no processo de faturamento, na organização de notas fiscais, cancelamento de notas fiscais, liberação e cadastros de motoristas.',
+          description: 'Responsável pela logística reversa, controlando retorno e autorizações de devoluções, baixa de notas fiscais de devoluções, atualização e alimentação de planilha de controle de devolução, relatório de devoluções, reposição de faltas e avarias nos clientes e transportadoras.',
           skills: ['Habilidades analíticas', 'Office', 'Logística Reversa', 'Conferencias', 'Suporte']
         },
         {
@@ -170,12 +176,31 @@ export const translations: Record<Language, Translation> = {
     projects: {
       title: 'Meus Projetos',
       btnGithub: 'Ver no GitHub',
+      btnLink: 'Ver Site',
       list: [
         {
-            title: "Projeto TCC",
-            description: "Projeto de Conclusão de Curso focado em Análise e Desenvolvimento de Sistemas. Uma plataforma completa para gestão acadêmica.",
-            technologies: ['PHP', 'Laravel', 'MySQL', 'React', 'N8N'],
+            title: "Peneira DB (TCC)",
+            description: "Sistema completo desenvolvido para gerenciar e otimizar processos de avaliação e seleção em peneiras de futebol.",
+            technologies: ['PHP', 'Laravel', 'MySQL', 'React', 'Vercel', 'Railway'],
             link: "https://github.com/jRoblxz/Projeto_TCC",
+            siteLink: "https://projeto-tcc.vercel.app",
+            image: Peneira
+        },
+        {
+            title: "Sports Analytics Tracker",
+            description: "Sistema inovador de visão computacional capaz de mapear e rastrear jogadores de hóquei em tempo real. Integrado ao TCC.",
+            technologies: ['Python', 'OpenCV', 'YOLO', 'IA', 'Modal', 'Vercel', 'Railway'],
+            link: "https://github.com/jRoblxz/Projeto_TCC",
+            siteLink: "https://projeto-tcc.vercel.app",
+            image: Tracking
+        },
+        {
+            title: "Jogo Web Interativo",
+            description: "Aplicação web interativa focada na experiência do usuário e gerenciamento dinâmico de estados. Consiste em um jogo de caça-palavras.",
+            technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX', 'Vercel', 'Railway'],
+            link: "https://github.com/jRoblxz/word_search_kpop",
+            siteLink: "https://word-search-kpop.vercel.app",
+            image: KpopGame
         },
       ]
     },
@@ -194,8 +219,8 @@ export const translations: Record<Language, Translation> = {
         namePlaceholder: 'Seu nome',
         emailLabel: 'Email',
         emailPlaceholder: 'seu@email.com',
-        SubjectLabel: 'Assunto',
-        SubjectPlaceholder: 'Digite o assunto...',
+        subjectLabel: 'Assunto',
+        subjectPlaceholder: 'Digite o assunto...',
         messageLabel: 'Mensagem',
         messagePlaceholder: 'Descreva seu projeto...',
         btnSubmit: 'Enviar Mensagem'
@@ -208,7 +233,7 @@ export const translations: Record<Language, Translation> = {
             {
                 name: 'Victor Almeida',
                 title: 'Unity Developer | RA | RM | RV',
-                text: 'João Roblez é um profissional notável, tive a honra de trabalhar ao seu lado e puder ver de perto como sua dedicação e metodologia de trabalho aplicada funcionam. Dedicado e atento aos menores detalhes...',
+                text: 'João Roblez é um profissional notável, tive a honra de trabalhar ao seu lado e puder ver de perto como sua dedicação e metodologia de trabalho aplicada funcionam...',
             },
         ]
     },
@@ -238,9 +263,9 @@ export const translations: Record<Language, Translation> = {
       title: 'About',
       me: 'Me',
       p1: 'I am João Pedro Costa Roblez, a Systems Analysis and Development student, currently in the final term of my degree, expected to graduate in mid-2026.',
-      p2: 'I work professionally as a Systems Development Assistant at Unoeste, in the Instructional Design department, responsible for managing and developing solutions for the institution\'s exclusive laboratories, such as Sala Betha and Arena Lab.',
-      p3: 'I have experience in systems development using React, PHP, and Laravel, as well as initial knowledge in Unity. I have a strong interest in creating technological solutions that combine efficiency, innovation, and quality.',
-      p4: 'I constantly seek to improve my knowledge and contribute to projects that generate real impact, adding value through technology.',
+      p2: 'I work professionally as a Systems Development Assistant at Unoeste, in the Instructional Design department, responsible for managing and developing solutions for the institution\'s exclusive laboratories.',
+      p3: 'I have experience in systems development using React, PHP, and Laravel, as well as initial knowledge in Unity.',
+      p4: 'I constantly seek to improve my knowledge and contribute to projects that generate real impact.',
       educationTitle: 'Education',
       educationCourse: 'Systems Analysis and Development',
       educationStatus: 'Expected graduation: Mid-2026',
@@ -268,7 +293,7 @@ export const translations: Record<Language, Translation> = {
           company: 'Alimentos Wuilson',
           period: '2023 - 2025 (SEP)',
           location: 'Regente Feijó, SP',
-          description: 'Responsible for reverse logistics, controlling returns and return authorizations, writing off return invoices, updating and feeding the return control spreadsheet, return reports, replenishing shortages and damages at customers and carriers. Also assisting the billing sector in the billing process, organizing invoices, canceling invoices, releasing and registering drivers.',
+          description: 'Responsible for reverse logistics, controlling returns and return authorizations, writing off return invoices, and assisting the billing sector.',
           skills: ['Analytical Skills', 'Office', 'Reverse Logistics', 'Conferences', 'Support']
         },
         {
@@ -276,7 +301,7 @@ export const translations: Record<Language, Translation> = {
           company: 'Alimentos Wuilson',
           period: '2022 - 2023',
           location: 'Regente Feijó, SP',
-          description: 'Assisted in delivery control by providing delivery forecasts to the customer, extending overdue slips, writing off stubs, feeding and updating delivery control spreadsheets.',
+          description: 'Assisted in delivery control by providing delivery forecasts to the customer and managing delivery spreadsheets.',
           skills: ['Teamwork', 'Office', 'Delivery Performance', 'Conferences', 'Support']
         },
       ],
@@ -284,13 +309,32 @@ export const translations: Record<Language, Translation> = {
     projects: {
       title: 'My Projects',
       btnGithub: 'View on GitHub',
+      btnLink: 'View Site',
       list: [
         {
-            title: "Capstone Project (TCC)",
-            description: "Final Course Project focused on Systems Analysis and Development. A complete platform for academic management.",
+            title: "Peneira DB (TCC)",
+            description: "Final Course Project focused on Systems Analysis and Development. A complete platform for soccer recruitment management.",
             technologies: ['PHP', 'Laravel', 'MySQL', 'React', 'N8N'],
             link: "https://github.com/jRoblxz/Projeto_TCC",
+            siteLink: "https://projeto-tcc.vercel.app",
+            image: Peneira
         },
+        {
+            title: "Sports Analytics Tracker",
+            description: "Innovative computer vision system capable of mapping and tracking hockey players in real time. Integrated with the Capstone Project.",
+            technologies: ['Python', 'OpenCV', 'YOLO', 'IA', 'Modal', 'Vercel', 'Railway'],
+            link: "https://github.com/jRoblxz/Projeto_TCC",
+            siteLink: "https://projeto-tcc.vercel.app",
+            image: Tracking
+        },
+        {
+            title: "Interactive Web Game",
+            description: "Interactive web application focused on user experience and dynamic state management. It consists of a word search game.",
+            technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX', 'Vercel', 'Railway'],
+            link: "https://github.com/jRoblxz/word_search_kpop",
+            siteLink: "https://word-search-kpop.vercel.app/",
+            image: KpopGame
+        }
       ]
     },
     contact: {
@@ -308,8 +352,8 @@ export const translations: Record<Language, Translation> = {
         namePlaceholder: 'Your name',
         emailLabel: 'Email',
         emailPlaceholder: 'your@email.com',
-        SubjectLabel: 'Subject',
-        SubjectPlaceholder: 'Enter the subject...',
+        subjectLabel: 'Subject',
+        subjectPlaceholder: 'Enter the subject...',
         messageLabel: 'Message',
         messagePlaceholder: 'Describe your project...',
         btnSubmit: 'Send Message'
@@ -322,7 +366,7 @@ export const translations: Record<Language, Translation> = {
             {
                 name: 'Victor Almeida',
                 title: 'Unity Developer | AR | MR | VR',
-                text: 'João Roblez is a remarkable professional, I had the honor of working alongside him and could see up close how his dedication and applied work methodology function. Dedicated and attentive to the smallest details...',
+                text: 'João Roblez is a remarkable professional, I had the honor of working alongside him...',
             },
         ]
     },
