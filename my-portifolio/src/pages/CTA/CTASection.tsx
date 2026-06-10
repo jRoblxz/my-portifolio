@@ -138,8 +138,8 @@ export default function CTASection() {
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "+55 (14) 99665-3079",
-      href: "https://wa.me/5518982136520", // Ajustei o href para WhatsApp Web/App
+      value: "+55 (14) 98213-6520",
+      href: "https://wa.me/5514982136520", // Ajustei o href para WhatsApp Web/App
     },
     {
       icon: MapPin,
