@@ -3,6 +3,8 @@ import Peneira from '@/assets/images/peneiras.png';
 import Tracking from '@/assets/images/tracking.png';
 import KpopGame from '@/assets/images/kpopgame.png';
 import PokedexImage from '@/assets/images/pokedex.png';
+import TemperandinImage from "@/assets/images/temperandin.png";
+import BarberflowImage from "@/assets/images/barberflow.png";
 
 export type Language = 'pt' | 'en';
 
@@ -131,11 +133,11 @@ export const translations: Record<Language, Translation> = {
     about: {
       title: "Sobre",
       me: "Mim",
-      p1: "Sou João Pedro Costa Roblez, formado em Análise e Desenvolvimento de Sistemas, com o objetivo de construir soluções e arquiteturas escaláveis.",
-      p2: "Atuo profissionalmente como Auxiliar de Desenvolvimento de Sistemas na Unoeste, no departamento de Design Instrucional, responsável pela gestão e desenvolvimento de soluções para laboratórios exclusivos da instituição, como a Sala Betha e a Arena Lab.",
-      p3: "Tenho experiência no desenvolvimento de sistemas utilizando React, PHP e Laravel, além de conhecimentos iniciais em Unity. Possuo forte interesse em criar soluções tecnológicas que unam eficiência, inovação e qualidade.",
-      p4: "Busco constantemente aprimorar meus conhecimentos e contribuir para projetos que gerem impacto real, agregando valor por meio da tecnologia.",
-      educationTitle: "Formação",
+      p1: "Desenvolvedor Full Stack focado em arquitetar soluções de software robustas, escaláveis e com alto impacto operacional. Minha filosofia de trabalho é guiada pela premissa de que código limpo e bem estruturado é o motor para transformar e impulsionar negócios.",
+      p2: "Atuo profissionalmente na equipe de Desenvolvimento de Sistemas da Unoeste (Design Instrucional), onde crio e sustento aplicações web institucionais e colaboro na gestão de ecossistemas tecnológicos e laboratórios de inovação de referência, como a Sala Betha e a Arena Lab.",
+      p3: "Combino forte domínio no Back-End com PHP, Laravel e modelagem relacional (MySQL) à criação de interfaces modernas, altamente reativas e performáticas utilizando React, TypeScript e Tailwind CSS. Também integro soluções de automação de fluxos (N8N) e exploro aplicações práticas de IA e Visão Computacional (OpenCV/YOLO).",
+      p4: "Com postura pragmática e foco em entrega, busco constantemente alinhar excelência técnica, otimização de performance e a melhor experiência de uso em cada projeto assumido.",
+      educationTitle: "Formação Acadêmica",
       educationCourse: "Análise e Desenvolvimento de Sistemas",
       educationStatus: "Concluído em 2026",
     },
@@ -150,49 +152,49 @@ export const translations: Record<Language, Translation> = {
       title: "Experiência Profissional",
       list: [
         {
-          title: "Aux. Técnico em Desenvolvimento de Sistemas",
-          company: "Unoeste",
+          title: "Auxiliar Técnico em Desenvolvimento de Sistemas",
+          company: "Unoeste (Universidade do Oeste Paulista)",
           period: "2025 - Atual",
           location: "Presidente Prudente, SP",
           description:
-            "Atuação no desenvolvimento e manutenção de sistemas institucionais, suporte a aplicações web e integração de novas funcionalidades.",
+            "Atuação direta no desenvolvimento full stack e sustentação de sistemas educacionais e institucionais focados em Design Instrucional. Responsável técnico pelo suporte e evolução de ecossistemas inovadores e laboratórios de tecnologia avançada, como a Sala Betha e a Arena Lab, aplicando arquiteturas escaláveis e integrações contínuas.",
           skills: [
             "React",
             "PHP",
             "Laravel",
-            "Banco de Dados",
-            "Full Stack",
+            "TypeScript",
+            "MySQL",
             "Tailwind CSS",
+            "Suporte N3",
           ],
         },
         {
-          title: "Auxiliar Administrativo",
+          title: "Auxiliar Administrativo & Logístico",
           company: "Alimentos Wuilson",
-          period: "2023 - 2025 (SET)",
+          period: "2023 - 2025",
           location: "Regente Feijó, SP",
           description:
-            "Responsável pela logística reversa, controlando retorno e autorizações de devoluções, baixa de notas fiscais de devoluções, atualização e alimentação de planilha de controle de devolução, relatório de devoluções, reposição de faltas e avarias nos clientes e transportadoras.",
+            "Gestão analítica de processos logísticos reversos e emissão fiscal. Responsável por desenvolver controles e relatórios automatizados via planilhas complexas, auditar devoluções e prestar suporte operacional direto às transportadoras e clientes finais.",
           skills: [
-            "Habilidades analíticas",
-            "Office",
+            "Análise de Dados",
             "Logística Reversa",
-            "Conferencias",
-            "Suporte",
+            "Pacote Office Avançado",
+            "Resolução de Problemas",
+            "Gestão Operacional",
           ],
         },
         {
-          title: "Aprendiz de Logística",
+          title: "Jovem Aprendiz de Logística",
           company: "Alimentos Wuilson",
           period: "2022 - 2023",
           location: "Regente Feijó, SP",
           description:
-            "Auxiliava o controle de entregas dando previsões de entregas ao cliente, prorrogando boletos atrasados, baixas de canhotos, alimentando e atualizando planilhas de controles de entregas.",
+            "Apoio no controle de tráfego de entregas, atualização contínua de bases de dados operacionais, renegociação de prazos de recebimento e suporte ao atendimento de clientes B2B.",
           skills: [
-            "Trabalho em equipe",
-            "Office",
-            "Desempenho de entregas",
-            "Conferencias",
-            "Suporte",
+            "Trabalho em Equipe",
+            "Controle de Dados",
+            "Atendimento B2B",
+            "Agilidade Operacional",
           ],
         },
       ],
@@ -203,70 +205,64 @@ export const translations: Record<Language, Translation> = {
       btnLink: "Ver Site",
       list: [
         {
-          title: "Gestão de categorias de Base (TCC)",
+          title: "TemperAndin | ERP Gastronômico & Gestão",
           description:
-            "Sistema completo desenvolvido para gerenciar e otimizar processos de avaliação e seleção em peneiras de futebol.",
-          technologies: [
-            "PHP",
-            "Laravel",
-            "MySQL",
-            "React",
-            "Vercel",
-            "Railway",
-          ],
+            "Sistema web full-stack para gestão operacional e controle de estoque. Arquitetado com baixa automática de insumos por venda, painéis gerenciais (Dashboards) para análise de fluxo de caixa e relatórios financeiros dinâmicos.",
+          technologies: ["React", "PHP", "Laravel", "MySQL", "Tailwind CSS"],
+          link: "https://github.com/jRoblxz/TemperAndin",
+          siteLink: "https://sparklab.dev.br/projetos/temperandin",
+          image: TemperandinImage,
+        },
+        {
+          title: "BarberFlow | Agendamento & Gateway de Pagamento",
+          description:
+            "Plataforma inteligente de agendamentos online com gestão de clientes (regras de negócio para programa VIP), processamento de pagamentos integrado e automação de relatórios de faturamento.",
+          technologies: ["React", "TypeScript", "REST API", "Tailwind CSS"],
+          link: "https://github.com/jRoblxz/Barber_ERP",
+          siteLink: "https://sparklab.dev.br/projetos/barberflow",
+          image: BarberflowImage,
+        },
+        {
+          title: "Plataforma de Gestão Esportiva & Scouting",
+          description:
+            "Arquitetura de software desenvolvida para automatizar a avaliação e seleção de atletas em peneiras de futebol. Gerencia fluxos de aprovação, cadastros e gera métricas de desempenho para clubes.",
+          technologies: ["PHP", "Laravel", "MySQL", "React", "Vercel"],
           link: "https://github.com/jRoblxz/Projeto_TCC",
           siteLink: "https://projeto-tcc.vercel.app",
           image: Peneira,
         },
         {
-          title: "Sports Analytics Tracker",
+          title: "Sports Analytics Tracker (Visão Computacional)",
           description:
-            "Sistema inovador de visão computacional capaz de mapear e rastrear jogadores de hóquei em tempo real. Integrado ao TCC.",
-          technologies: [
-            "Python",
-            "OpenCV",
-            "YOLO",
-            "IA",
-            "Modal",
-            "Vercel",
-            "Railway",
-          ],
-          link: "https://github.com/jRoblxz/Projeto_TCC",
+            "Sistema avançado de Inteligência Artificial para mapeamento e rastreamento térmico de jogadores em tempo real utilizando redes neurais convolucionais (YOLO) e processamento de vídeo.",
+          technologies: ["Python", "OpenCV", "YOLO", "IA", "Modal"],
+          link: "https://github.com/jRoblxz/Sports-Analytics-Tracker",
           siteLink: "https://projeto-tcc.vercel.app",
           image: Tracking,
         },
         {
-          title: "Jogo Web Interativo",
+          title: "Pokédex Full-Stack (Projeto Colaborativo)",
           description:
-            "Aplicação web interativa focada na experiência do usuário e gerenciamento dinâmico de estados. Consiste em um jogo de caça-palavras.",
-          technologies: [
-            "React",
-            "TypeScript",
-            "Tailwind CSS",
-            "UI/UX",
-            "Vercel",
-            "Railway",
-          ],
-          link: "https://github.com/jRoblxz/word_search_kpop",
-          siteLink: "https://word-search-kpop.vercel.app",
-          image: KpopGame,
-        },
-        {
-          title: "Pokédex (Projeto em equipe)",
-          description:
-            "Aplicação web full-stack para catalogação de Pokémons consumindo a PokeAPI. Conta com interface moderna em Dark Mode, filtros cruzados por tipos, paginação otimizada e modais detalhados com gráficos de estatísticas interativos e cadeia evolutiva.",
+            "Aplicação web modular construída em equipe consumindo a PokeAPI. Implementa filtros complexos cruzados, paginação otimizada, Dark Mode e visualização analítica com gráficos de estatísticas interativos.",
           technologies: [
             "React",
             "Node.js",
             "TypeScript",
             "Tailwind CSS",
             "Recharts",
-            "PokeAPI",
-            "Render",
           ],
           link: "https://github.com/jRoblxz/gestaoprojetosequipe3_pokedex",
-          siteLink: "https://pokedex-fatecpp.vercel.app/", // Atualize com o link real do front-end
-          image: PokedexImage, // Lembre-se de importar a imagem correspondente no topo do arquivo
+          siteLink: "https://pokedex-fatecpp.vercel.app/",
+          image: PokedexImage,
+        },
+        {
+          title: "Engine de Caça-Palavras Interativo",
+          description:
+            "Aplicação web focada no gerenciamento de estados complexos e reatividade no front-end. Lida com algoritmos de validação de grade em tempo real e interface otimizada (UI/UX).",
+          technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+          link: "https://github.com/jRoblxz/word_search_kpop",
+          siteLink: "https://word-search-kpop.vercel.app",
+          image: KpopGame,
         },
       ],
     },
@@ -330,10 +326,10 @@ export const translations: Record<Language, Translation> = {
     about: {
       title: "About",
       me: "Me",
-      p1: "I am João Pedro Costa Roblez, a graduate in Systems Analysis and Development, with the goal of building scalable solutions and architectures.",
-      p2: "I work professionally as a Systems Development Assistant at Unoeste, in the Instructional Design department, responsible for the management and development of solutions for the institution's exclusive laboratories, such as Sala Betha and Arena Lab.",
-      p3: "I have experience in developing systems using React, PHP, and Laravel, in addition to initial knowledge of Unity. I have a strong interest in creating technological solutions that combine efficiency, innovation, and quality.",
-      p4: "I constantly seek to improve my knowledge and contribute to projects that generate real impact, adding value through technology.",
+      p1: "Full-Stack Developer focused on engineering robust, scalable software solutions with high operational impact. My work philosophy is driven by the belief that clean, well-architected code is the primary engine for business transformation.",
+      p2: "I work professionally within the Systems Development team at Unoeste (Instructional Design), building and sustaining institutional web applications while collaborating on the technical management of cutting-edge innovation hubs such as Sala Betha and Arena Lab.",
+      p3: "I combine strong Back-End expertise in PHP, Laravel, and relational databases (MySQL) with the creation of modern, highly reactive, and high-performance user interfaces using React, TypeScript, and Tailwind CSS. I also actively integrate workflow automation (N8N) and practical AI / Computer Vision features (OpenCV/YOLO).",
+      p4: "With a pragmatic, results-oriented mindset, I consistently aim to bridge technical excellence, performance optimization, and seamless user experiences across every project.",
       educationTitle: "Education",
       educationCourse: "Systems Analysis and Development",
       educationStatus: "Completed in 2026",
@@ -350,33 +346,34 @@ export const translations: Record<Language, Translation> = {
       list: [
         {
           title: "Systems Development Tech. Assistant",
-          company: "Unoeste",
+          company: "Unoeste (University of Western São Paulo)",
           period: "2025 - Present",
           location: "Presidente Prudente, SP",
           description:
-            "Working on the development and maintenance of institutional systems, supporting web applications, and integrating new features.",
+            "Direct involvement in full-stack development and maintenance of educational and institutional systems focused on Instructional Design. Technical lead for the technical support and evolution of cutting-edge innovation ecosystems and advanced tech laboratories, such as Sala Betha and Arena Lab, applying scalable architectures and continuous integration.",
           skills: [
             "React",
             "PHP",
             "Laravel",
-            "Database",
-            "Full Stack",
+            "TypeScript",
+            "MySQL",
             "Tailwind CSS",
+            "Tier 3 Support",
           ],
         },
         {
-          title: "Administrative Assistant",
+          title: "Administrative & Logistics Assistant",
           company: "Alimentos Wuilson",
-          period: "2023 - 2025 (SEP)",
+          period: "2023 - 2025",
           location: "Regente Feijó, SP",
           description:
-            "Responsible for reverse logistics, controlling returns and return authorizations, writing off return invoices, and assisting the billing sector.",
+            "Analytical management of reverse logistics workflows and tax operations. Responsible for developing automated controls and reporting via complex spreadsheets, auditing product returns, and providing direct operational support to carriers and B2B clients.",
           skills: [
-            "Analytical Skills",
-            "Office",
+            "Data Analysis",
             "Reverse Logistics",
-            "Conferences",
-            "Support",
+            "Advanced MS Office",
+            "Problem Solving",
+            "Operations Management",
           ],
         },
         {
@@ -385,14 +382,24 @@ export const translations: Record<Language, Translation> = {
           period: "2022 - 2023",
           location: "Regente Feijó, SP",
           description:
-            "Assisted in delivery control by providing delivery forecasts to the customer and managing delivery spreadsheets.",
+            "Supported delivery traffic monitoring, continuous updates of operational databases, payment deadline negotiations, and direct support for B2B customer service.",
           skills: [
             "Teamwork",
-            "Office",
-            "Delivery Performance",
-            "Conferences",
-            "Support",
+            "Data Control",
+            "B2B Customer Service",
+            "Operational Agility",
           ],
+        },
+      ],
+    },
+    recommendations: {
+      title: "Recommendations",
+      btnLinkedin: "View on LinkedIn",
+      list: [
+        {
+          name: "Victor Almeida",
+          title: "Unity Developer | AR | MR | VR",
+          text: "João Roblez is a remarkable professional. I had the honor of working alongside him and witnessed firsthand his dedication and applied work methodology. He demonstrates exceptional technical capability, high adaptability, and a strong collaborative mindset, consistently adding significant value to challenging software projects.",
         },
       ],
     },
@@ -402,63 +409,64 @@ export const translations: Record<Language, Translation> = {
       btnLink: "View Site",
       list: [
         {
-          title: "Youth Category Management (Final Course Project)",
+          title: "TemperAndin | Gastronomic ERP & Management",
           description:
-            "Final Course Project focused on Systems Analysis and Development. A complete platform for soccer recruitment management.",
-          technologies: ["PHP", "Laravel", "MySQL", "React", "N8N"],
+            "Full-stack web application for operational management and smart inventory control. Engineered with automated ingredient deduction per sale, analytical dashboards for cash flow, and financial reporting.",
+          technologies: ["React", "PHP", "Laravel", "MySQL", "Tailwind CSS"],
+          link: "https://github.com/jRoblxz/TemperAndin",
+          siteLink: "https://sparklab.dev.br/projetos/temperandin",
+          image: TemperandinImage,
+        },
+        {
+          title: "BarberFlow | Smart Scheduling & Payment Gateway",
+          description:
+            "Intelligent online scheduling platform featuring customer relationship management (VIP loyalty tiers rules), integrated online payment processing, and automated revenue tracking.",
+          technologies: ["React", "TypeScript", "REST API", "Tailwind CSS"],
+          link: "https://github.com/jRoblxz/Barber_ERP",
+          siteLink: "https://sparklab.dev.br/projetos/barberflow",
+          image: BarberflowImage,
+        },
+        {
+          title: "Sports Scouting & Assessment Platform",
+          description:
+            "Software architecture designed to streamline athlete evaluation and selection workflows. Manages approval stages, player registries, and outputs performance metrics for clubs.",
+          technologies: ["PHP", "Laravel", "MySQL", "React", "Vercel"],
           link: "https://github.com/jRoblxz/Projeto_TCC",
           siteLink: "https://projeto-tcc.vercel.app",
           image: Peneira,
         },
         {
-          title: "Sports Analytics Tracker",
+          title: "Sports Analytics Tracker (Computer Vision)",
           description:
-            "Innovative computer vision system capable of mapping and tracking hockey players in real time. Integrated with the Capstone Project.",
-          technologies: [
-            "Python",
-            "OpenCV",
-            "YOLO",
-            "IA",
-            "Modal",
-            "Vercel",
-            "Railway",
-          ],
-          link: "https://github.com/jRoblxz/Projeto_TCC",
+            "Advanced Artificial Intelligence system for real-time player mapping and spatial tracking using convolutional neural networks (YOLO) and automated video processing.",
+          technologies: ["Python", "OpenCV", "YOLO", "IA", "Modal"],
+          link: "https://github.com/jRoblxz/Sports-Analytics-Tracker",
           siteLink: "https://projeto-tcc.vercel.app",
           image: Tracking,
         },
         {
-          title: "Interactive Web Game",
+          title: "Full-Stack Pokédex (Collaborative Team Project)",
           description:
-            "Interactive web application focused on user experience and dynamic state management. It consists of a word search game.",
-          technologies: [
-            "React",
-            "TypeScript",
-            "Tailwind CSS",
-            "UI/UX",
-            "Vercel",
-            "Railway",
-          ],
-          link: "https://github.com/jRoblxz/word_search_kpop",
-          siteLink: "https://word-search-kpop.vercel.app/",
-          image: KpopGame,
-        },
-        {
-          title: "Pokédex (Team Project)",
-          description:
-            "A full-stack web application for cataloging Pokémon, consuming the PokeAPI. It features a modern Dark Mode interface, dual-type cross-filtering, optimized pagination, and detailed modals with interactive stat charts and evolution chains.",
+            "Modular web app built collaboratively consuming the PokeAPI. Features cross-referenced type filtering, optimized pagination, Dark Mode, and analytical stat visualizations via interactive charts.",
           technologies: [
             "React",
             "Node.js",
             "TypeScript",
             "Tailwind CSS",
             "Recharts",
-            "PokeAPI",
-            "Render",
           ],
           link: "https://github.com/jRoblxz/gestaoprojetosequipe3_pokedex",
-          siteLink: "https://pokedex-fatecpp.vercel.app/", // Update with your actual front-end link
-          image: PokedexImage, // Remember to import the image at the top of your file
+          siteLink: "https://pokedex-fatecpp.vercel.app/",
+          image: PokedexImage,
+        },
+        {
+          title: "Interactive Word Search Engine",
+          description:
+            "Web application highlighting complex front-end state management and user interactivity. Handles real-time grid validation algorithms alongside a highly responsive UI/UX.",
+          technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+          link: "https://github.com/jRoblxz/word_search_kpop",
+          siteLink: "https://word-search-kpop.vercel.app",
+          image: KpopGame,
         },
       ],
     },
@@ -484,17 +492,6 @@ export const translations: Record<Language, Translation> = {
         messagePlaceholder: "Describe your project...",
         btnSubmit: "Send Message",
       },
-    },
-    recommendations: {
-      title: "Recommendations",
-      btnLinkedin: "View on LinkedIn",
-      list: [
-        {
-          name: "Victor Almeida",
-          title: "Unity Developer | AR | MR | VR",
-          text: "João Roblez is a remarkable professional, I had the honor of working alongside him...",
-        },
-      ],
     },
     footer: {
       rights: "All rights reserved.",

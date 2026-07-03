@@ -1,18 +1,16 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
-import { useState } from "react";
 import BtnVoltar from "@/components/ui/BtnVoltar";
-import "@fontsource/league-spartan/400.css";
-import "@fontsource/league-spartan/500.css";
-import "@fontsource/league-spartan/700.css";
 import { Footer } from "@/pages/Homes/sections/Footer/Footer";
-import { useLanguage } from "@/contexts/LanguageContext"; // Importar hook
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function CTASection() {
-  const { t } = useLanguage(); // Usar hook
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,17 +20,13 @@ export default function CTASection() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -49,18 +43,12 @@ export default function CTASection() {
         {
           method: "POST",
           body: form,
-        }
+        },
       );
 
-      if (!response.ok) {
-        throw new Error("Erro no servidor");
-      }
-
+      if (!response.ok) throw new Error("Erro no servidor");
       const data = await response.json();
-
-      if (!data.success) {
-        throw new Error(data.message || "Erro ao enviar");
-      }
+      if (!data.success) throw new Error(data.message || "Erro ao enviar");
 
       setSuccess(true);
       setFormData({ name: "", email: "", Subject: "", message: "" });
@@ -71,47 +59,6 @@ export default function CTASection() {
     }
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   setLoading(true);
-  //   setError(null);
-  //   setSuccess(false);
-
-  //   try {
-  //     // const response = await fetch("/api/vendor/contact.php", {
-  //     const response = await fetch("https://joaoroblez.sparklab.dev.br/api/contact.php", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "X-Requested-With": "XMLHttpRequest",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (!response.ok || !data.success) {
-  //       throw new Error(data.message || "Erro ao enviar mensagem");
-  //     }
-
-  //     setSuccess(true);
-  //     setFormData({ name: "", email: "", Subject: "", message: "" });
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   } catch (err: any) {
-  //     setError(err.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const handleGoBack = () => {
-    if (typeof window !== "undefined") {
-      window.history.back();
-    }
-  };
-
-  const [copied, setCopied] = useState(false);
   const email = "joaoroblez@sparklab.dev.br";
 
   const handleCopyEmail = (e: React.MouseEvent) => {
@@ -121,7 +68,10 @@ export default function CTASection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Movemos o array de contato para dentro do componente para acessar 't'
+  const handleGoBack = () => {
+    if (typeof window !== "undefined") window.history.back();
+  };
+
   const contactInfo = [
     {
       icon: Mail,
@@ -131,43 +81,35 @@ export default function CTASection() {
     },
     {
       icon: Phone,
-      label: t.contact.labels.phone,
+      label: "WhatsApp Direto",
       value: "+55 (18) 99665-3079",
-      href: "tel:+5518996653079",
-    },
-    {
-      icon: Phone,
-      label: "WhatsApp",
-      value: "+55 (14) 98213-6520",
-      href: "https://wa.me/5514982136520", // Ajustei o href para WhatsApp Web/App
+      href: "https://wa.me/5518996653079",
     },
     {
       icon: MapPin,
       label: t.contact.labels.location,
       value: "Presidente Prudente, SP - Brasil",
-      href: "#",
+      href: "https://maps.google.com/?q=Presidente+Prudente+SP",
     },
   ];
 
   return (
     <section
       id="contact"
-      className="bg-[#e4e0d7] relative overflow-hidden font-spartan min-h-screen flex flex-col"
+      className="bg-[#1e1c1c] bg-tech-grid text-[#e4e0d7] relative font-spartan min-h-screen flex flex-col justify-between overflow-hidden"
     >
+      {/* Botão Voltar Fixo no Topo */}
       <div className="absolute top-6 left-6 z-50">
         <BtnVoltar onClick={handleGoBack} />
       </div>
 
-      <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: "url(/cta-background.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      {/* Brilho decorativo sutil no fundo */}
+      <div className="absolute top-1/4 left-10 w-[450px] h-[450px] bg-[#7C3AED]/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-[#3B82F6]/10 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow py-24 w-full">
+      {/* Container Principal com espaçamento superior pt-32 para não cortar o título */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-20 w-full flex-grow flex flex-col justify-center">
+        {/* Cabeçalho Bem Posicionado */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -175,69 +117,76 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1e1c1c] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             {t.contact.title}
           </h2>
-          <p className="text-lg text-[#5a5753] max-w-2xl mx-auto">
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
             {t.contact.subtitle}
           </p>
+          <div className="w-16 h-1.5 bg-[#7C3AED] mx-auto mt-5 rounded-full shadow-[0_0_12px_#7C3AED]" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* Grade Alinhada */}
+        <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Coluna da Esquerda: Informações e Botões Antigos (5 Colunas) */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="md:col-span-5 space-y-8"
           >
-            <h3 className="text-2xl font-bold text-[#1e1c1c] mb-6">
-              {t.contact.infoTitle}
-            </h3>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                {t.contact.infoTitle}
+              </h3>
 
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon;
-              return (
-                <motion.a
-                  key={index}
-                  href={info.href}
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-[#f5f3f0] transition-colors duration-300 cursor-pointer"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-[#7c3aed] text-white">
-                      <Icon size={24} />
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-[#5a5753]">
-                      {info.label}
-                    </p>
-                    <p className="text-lg font-semibold text-[#1e1c1c]">
-                      {info.value}
-                    </p>
-                  </div>
-                </motion.a>
-              );
-            })}
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => {
+                  const Icon = info.icon;
+                  return (
+                    <motion.a
+                      key={index}
+                      href={info.href}
+                      target={
+                        info.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel="noopener noreferrer"
+                      whileHover={{ x: 6 }}
+                      className="flex items-center gap-4 p-4 rounded-2xl bg-[#242222] border border-white/10 hover:border-[#7C3AED]/50 transition-all duration-300 shadow-lg"
+                    >
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#7C3AED] text-white shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+                          <Icon size={22} />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                          {info.label}
+                        </p>
+                        <p className="text-base font-semibold text-white mt-0.5">
+                          {info.value}
+                        </p>
+                      </div>
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-sm font-medium text-[#5a5753] mb-4">
+            {/* BOTÕES ANTIGOS DAS REDES SOCIAIS RESTAURADOS */}
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">
                 {t.contact.socialTitle}
               </p>
               <div className="flex gap-4">
-                {/* Botões Sociais (Github, Copy Email, etc) - Mantidos iguais */}
+                {/* GitHub */}
                 <a
                   href="https://github.com/jRoblxz"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-[#131212] border border-white/10 transition-colors shadow-md"
                 >
                   <span className="absolute bottom-0 left-0 h-0 w-full bg-[#24262a] transition-all duration-300 ease-in-out group-hover:h-full"></span>
                   <svg
@@ -251,35 +200,38 @@ export default function CTASection() {
                   </svg>
                 </a>
 
+                {/* Copiar E-mail */}
                 <button
                   onClick={handleCopyEmail}
                   title={copied ? t.hero.emailCopied : t.hero.copyEmail}
-                  className="cursor-pointer group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors border-none"
+                  className="cursor-pointer group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-[#131212] border border-white/10 transition-colors shadow-md"
                 >
                   <span
                     className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out ${
                       copied
-                        ? "bg-green-600 h-full"
+                        ? "bg-emerald-600 h-full"
                         : "bg-[#d00909] h-0 group-hover:h-full"
                     }`}
                   ></span>
                   <div className="relative z-10">
                     {copied ? (
-                      <Check size={24} className="text-white animate-bounce" />
+                      <Check size={22} className="text-white animate-bounce" />
                     ) : (
                       <Mail
-                        size={24}
+                        size={22}
                         className="text-slate-400 transition-colors group-hover:text-white"
                       />
                     )}
                   </div>
                 </button>
 
+                {/* LinkedIn */}
                 <a
                   href="https://linkedin.com/in/joaoroblez"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
+                  aria-label="LinkedIn"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-[#131212] border border-white/10 transition-colors shadow-md"
                 >
                   <span className="absolute bottom-0 left-0 h-0 w-full bg-[#0A66C2] transition-all duration-300 ease-in-out group-hover:h-full"></span>
                   <svg
@@ -297,11 +249,13 @@ export default function CTASection() {
                   </svg>
                 </a>
 
+                {/* Instagram */}
                 <a
                   href="https://www.instagram.com/joaoroblxz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors"
+                  aria-label="Instagram"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-[#131212] border border-white/10 transition-colors shadow-md"
                 >
                   <span className="absolute bottom-0 left-0 h-0 w-full bg-[linear-gradient(45deg,#405de6,#5b51db,#b33ab4,#c135b4,#e1306c,#fd1f1f)] transition-all duration-300 ease-in-out group-hover:h-full"></span>
                   <svg
@@ -319,101 +273,103 @@ export default function CTASection() {
                   </svg>
                 </a>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
+          {/* Coluna da Direita: Formulário Alinhado (7 Colunas) */}
           <motion.form
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="space-y-6 bg-[#1e1c1c] p-8 rounded-xl shadow-lg"
+            className="md:col-span-7 space-y-6 bg-[#242222] p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl"
           >
-            <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.nameLabel}
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border text-[#e4e0d7] border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.namePlaceholder}
-              />
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+                  {t.contact.form.nameLabel}
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder={t.contact.form.namePlaceholder}
+                  className="w-full px-4 py-3.5 rounded-xl bg-[#1e1c1c] border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] transition-all text-sm"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+                  {t.contact.form.emailLabel}
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder={t.contact.form.emailPlaceholder}
+                  className="w-full px-4 py-3.5 rounded-xl bg-[#1e1c1c] border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] transition-all text-sm"
+                />
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.emailLabel}
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+                {t.contact.form.subjectLabel || "Assunto"}
               </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.emailPlaceholder}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.subjectLabel}
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
+              <input
                 type="text"
                 name="Subject"
                 value={formData.Subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
                 placeholder={t.contact.form.subjectPlaceholder}
+                className="w-full px-4 py-3.5 rounded-xl bg-[#1e1c1c] border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] transition-all text-sm"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
                 {t.contact.form.messageLabel}
               </label>
-              <motion.textarea
-                whileFocus={{ scale: 1.02 }}
+              <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300 resize-none"
                 placeholder={t.contact.form.messagePlaceholder}
+                className="w-full px-4 py-3.5 rounded-xl bg-[#1e1c1c] border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] transition-all text-sm resize-none"
               />
             </div>
+
             {loading && (
-              <p className="text-yellow-400 text-sm">Enviando mensagem...</p>
+              <p className="text-amber-400 text-xs font-mono">
+                Processando envio seguro...
+              </p>
             )}
-
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-
+            {error && (
+              <p className="text-rose-400 text-xs font-mono">{error}</p>
+            )}
             {success && (
-              <p className="text-green-500 text-sm">
-                Mensagem enviada com sucesso!
+              <p className="text-emerald-400 text-xs font-mono flex items-center gap-1.5">
+                <Check size={16} /> Mensagem enviada com sucesso!
               </p>
             )}
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className="w-full px-6 py-3 bg-[#7c3aed] text-white font-semibold rounded-lg hover:bg-[#6d28d9] transition-colors duration-300 flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold text-base transition-all duration-200 shadow-lg shadow-[#7C3AED]/30 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
-              {loading ? "Enviando..." : t.contact.form.btnSubmit}
-              <Send size={20} />
+              <span>{loading ? "Enviando..." : t.contact.form.btnSubmit}</span>
+              <Send size={18} />
             </motion.button>
           </motion.form>
         </div>

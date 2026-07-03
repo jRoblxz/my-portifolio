@@ -1,118 +1,114 @@
-import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { GlassmorphicCard } from "@/components/ui/GlassmorphicCard";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function WorkExperience() {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useLanguage();
 
-  // Função auxiliar para cores (mantive fixa, mas pode vir do JSON se quiser)
-  const getExpColor = (index: number) => {
-    return index % 2 === 0 ? '#7C3AED' : '#7C3AED';
-  };
-
   return (
-    <section id="experience" ref={ref as React.RefObject<HTMLElement>} className="relative py-20 md:py-32 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-6xl">
-        {/* Section title */}
-        <div className="mb-16 md:mb-24">
+    <section
+      id="experience"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="relative py-24 text-[#e4e0d7] overflow-hidden"
+    >
+      {/* Luz decorativa de fundo */}
+      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-[#7C3AED]/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-5xl font-spartan relative z-10">
+        {/* Cabeçalho da Seção */}
+        <div className="mb-16 text-center">
           <h2
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#e4e0d7] mb-4"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 0.6s ease-out',
+              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+              transition: "all 0.6s ease-out",
             }}
           >
             {t.experience.title}
           </h2>
-          <div
-            className="w-20 h-1 bg-gradient-to-r from-[#7C3AED] to-[#] rounded-full"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-              transformOrigin: 'left',
-              transition: 'all 0.6s ease-out 0.2s',
-            }}
-          />
+          <div className="w-16 h-1.5 bg-[#7C3AED] mx-auto rounded-full shadow-[0_0_12px_#7C3AED]" />
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          <div
-            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.6s ease-out 0.3s',
-              transform: 'translateX(-50%)',
-            }}
-          />
-
-          {/* Iterando sobre a lista traduzida */}
-          <div className="space-y-12 md:space-y-16">
-            {t.experience.list.map((exp, index) => {
-              const color = getExpColor(index);
-              return (
-              <div
-                key={index}
-                className={`relative md:flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-              >
+        {/* Linha do Tempo Vertical Contínua */}
+        <div className="relative border-l-2 border-white/10 ml-4 md:ml-32 pl-6 md:pl-10 space-y-12">
+          {t.experience.list.map((exp, index) => {
+            const isLatest = index === 0;
+            return (
+              <div key={index} className="relative group">
+                {/* Indicador Flutuante na Linha do Tempo */}
                 <div
-                  className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full border-4 border-background"
-                  style={{ background: color, transform: 'translate(-50%, 20px)' }}
-                />
+                  className={`absolute -left-[31px] md:-left-[49px] top-1.5 w-8 h-8 rounded-full border-4 border-[#1e1c1c] flex items-center justify-center transition-all duration-300 ${
+                    isLatest
+                      ? "bg-[#7C3AED] text-white shadow-[0_0_15px_#7C3AED]"
+                      : "bg-white/10 text-slate-400 group-hover:bg-[#7C3AED] group-hover:text-white"
+                  }`}
+                >
+                  <Briefcase size={14} />
+                </div>
 
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ml-12 md:ml-0`}>
-                  <GlassmorphicCard delay={index * 100}>
-                    <div className="mb-4">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h3 className="font-heading text-2xl font-semibold text-foreground">
+                {/* Período flutuante à esquerda em monitores médios/grandes */}
+                <div className="hidden md:block absolute -left-[200px] top-2 w-32 text-right font-mono text-sm text-slate-400 font-semibold">
+                  {exp.period}
+                </div>
+
+                {/* Cartão Glassmorphic com fundo escuro forçado */}
+                <GlassmorphicCard delay={index * 100}>
+                  <div className="p-6 md:p-8 bg-[#242222] rounded-2xl border border-white/10 shadow-xl group-hover:border-[#7C3AED]/40 transition-all duration-300">
+                    {/* Cabeçalho do Cargo */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-white/10 pb-4">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#7C3AED] transition-colors">
                             {exp.title}
                           </h3>
-                          <p className="font-body text-lg font-medium mt-1" style={{ color: color }}>
-                            {exp.company}
-                          </p>
+                          {isLatest && (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider bg-[#7C3AED]/20 text-[#7C3AED] border border-[#7C3AED]/30 px-2.5 py-0.5 rounded-full">
+                              <CheckCircle2 size={12} /> Atual
+                            </span>
+                          )}
                         </div>
-                        <Briefcase className="w-6 h-6 flex-shrink-0" style={{ color: color }} />
+                        <p className="text-base font-semibold text-slate-300 mt-1">
+                          {exp.company}
+                        </p>
                       </div>
-                    </div>
 
-                    <div className="flex flex-col gap-2 mb-4 text-muted-foreground font-body text-sm">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" style={{ color: color }} />
+                      {/* Período visível apenas em telas menores */}
+                      <div className="flex md:hidden items-center gap-2 text-xs font-mono text-[#7C3AED] font-semibold bg-[#7C3AED]/10 px-3 py-1 rounded-lg w-fit">
+                        <Calendar size={14} />
                         <span>{exp.period}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" style={{ color: color }} />
-                        <span>{exp.location}</span>
-                      </div>
                     </div>
 
-                    <p className="font-body text-foreground mb-4 leading-relaxed">
+                    {/* Localização */}
+                    <div className="flex items-center gap-2 text-xs text-slate-400 mb-4 font-mono">
+                      <MapPin size={14} className="text-[#7C3AED]" />
+                      <span>{exp.location}</span>
+                    </div>
+
+                    {/* Descrição das atividades */}
+                    <p className="text-slate-300 leading-relaxed mb-6 text-sm sm:text-base">
                       {exp.description}
                     </p>
 
+                    {/* Tags de Habilidades aplicadas */}
                     <div className="flex flex-wrap gap-2">
                       {exp.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-3 py-1 rounded-full text-xs font-body text-foreground transition-all duration-300 hover:scale-110"
-                          style={{
-                            background: `${color}15`,
-                            border: `1px solid ${color}30`,
-                          }}
+                          className="px-3 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-200 border border-white/10 transition-all duration-200 group-hover:border-[#7C3AED]/30"
                         >
                           {skill}
                         </span>
                       ))}
                     </div>
-                  </GlassmorphicCard>
-                </div>
+                  </div>
+                </GlassmorphicCard>
               </div>
-            )})}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
