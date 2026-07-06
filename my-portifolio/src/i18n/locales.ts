@@ -5,6 +5,7 @@ import KpopGame from "@/assets/images/kpopgame.png";
 import PokedexImage from "@/assets/images/pokedex.png";
 import TemperandinImage from "@/assets/images/temperandin.png";
 import BarberflowImage from "@/assets/images/barberflow.png";
+import DraftmonImage from "@/assets/images/draftmon.png";
 
 export type Language = "pt" | "en";
 
@@ -360,6 +361,15 @@ export const translations: Record<Language, Translation> = {
           link: "https://github.com/jRoblxz/word_search_kpop",
           siteLink: "https://word-search-kpop.vercel.app",
           image: KpopGame,
+        },
+        {
+          title: "Draftmon | Simulador Competitivo de Draft & Team Building",
+          description:
+            "Aplicação web interativa desenvolvida para simulação e gestão de drafts estratégicos em turnos. Implementa validação de regras de exclusividade de escolhas em tempo real, gerenciamento avançado de estados no front-end e uma interface reativa projetada para otimizar a análise e tomada de decisão do usuário.",
+          technologies: ["React", "TypeScript", "Tailwind CSS", "API"],
+          link: "https://github.com/jRoblxz/Draftmon", // Ajuste o link se necessário
+          siteLink: "https://draftmon-br.vercel.app", // Ajuste ou remova se não houver site online ainda
+          image: DraftmonImage, // Lembre-se de importar a imagem no topo do arquivo!
         },
       ],
     },
