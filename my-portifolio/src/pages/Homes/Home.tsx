@@ -11,6 +11,7 @@ import "@fontsource/league-spartan/500.css";
 import "@fontsource/league-spartan/700.css";
 import { WorkExperience } from "./sections/WorksSection/WorkExperience";
 import { LinkedInRecommendations } from "./sections/LinkedIn/LinkedInRecommendations";
+import { EngineeringImpact } from "./sections/EngineeringImpact/EngineeringImpact";
 
 export function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -68,6 +69,7 @@ export function Home() {
 
       <main className="bg-transparent">
         <HeroSection scrollToSection={scrollToSection} />
+        <EngineeringImpact />
         <AboutSection />
         <ProjectsSection />
         <SkillsSection />

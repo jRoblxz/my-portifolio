@@ -1,12 +1,12 @@
 // src/i18n/locales.ts
-import Peneira from '@/assets/images/peneiras.png';
-import Tracking from '@/assets/images/tracking.png';
-import KpopGame from '@/assets/images/kpopgame.png';
-import PokedexImage from '@/assets/images/pokedex.png';
+import Peneira from "@/assets/images/peneiras.png";
+import Tracking from "@/assets/images/tracking.png";
+import KpopGame from "@/assets/images/kpopgame.png";
+import PokedexImage from "@/assets/images/pokedex.png";
 import TemperandinImage from "@/assets/images/temperandin.png";
 import BarberflowImage from "@/assets/images/barberflow.png";
 
-export type Language = 'pt' | 'en';
+export type Language = "pt" | "en";
 
 export interface Project {
   title: string;
@@ -30,6 +30,16 @@ export interface Recommendation {
   name: string;
   title: string;
   text: string;
+}
+
+export interface EngineeringCase {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  problem: string;
+  engineering: string[];
+  impact: string;
 }
 
 export interface Translation {
@@ -60,6 +70,17 @@ export interface Translation {
     educationTitle: string;
     educationCourse: string;
     educationStatus: string;
+  };
+  engineering: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    caseStudyLabel: string;
+    problemLabel: string;
+    engineeringLabel: string;
+    impactLabel: string;
+    cases: EngineeringCase[];
   };
   skills: {
     title: string;
@@ -98,7 +119,7 @@ export interface Translation {
       email: string;
       phone: string;
       location: string;
-    }
+    };
   };
   recommendations: {
     title: string;
@@ -140,6 +161,82 @@ export const translations: Record<Language, Translation> = {
       educationTitle: "Formação Acadêmica",
       educationCourse: "Análise e Desenvolvimento de Sistemas",
       educationStatus: "Concluído em 2026",
+    },
+    engineering: {
+      badge: "Bastidores de Engenharia",
+      title: "Como Eu Resolvo",
+      titleHighlight: "Problemas Reais",
+      subtitle:
+        "Muito além da sintaxe do código: aqui está a forma como aplico arquitetura de software, lógica transacional e visão sistêmica para gerar impacto operacional em produção.",
+      caseStudyLabel: "Estudo de Caso",
+      problemLabel: "O Gargalo / Desafio Operacional",
+      engineeringLabel: "Engenharia & Solução Aplicada",
+      impactLabel: "Resultado & Impacto de Negócio",
+      cases: [
+        {
+          id: "institutional",
+          title: "Sustentação Institucional & Ambientes Críticos",
+          subtitle:
+            "Gestão técnica de aplicações e laboratórios de inovação (Sala Betha / Arena Lab)",
+          category: "Produção & Alta Disponibilidade",
+          problem:
+            "Ecossistemas institucionais acadêmicos e laboratórios de alta tecnologia exigem zero indisponibilidade, integração contínua com hardwares/softwares diversos e suporte rápido para não paralisar operações educacionais e eventos.",
+          engineering: [
+            "Sustentação preventiva e evolutiva de aplicações web institucionais de uso contínuo.",
+            "Diagnóstico ágil de falhas em nível de sistema operacional, rede e integração de software.",
+            "Padronização de ambientes laboratoriais complexos, garantindo estabilidade para usuários finais.",
+          ],
+          impact:
+            "Operação fluida de laboratórios institucionais de excelência, redução no tempo de inatividade e alta confiabilidade na execução de softwares educacionais.",
+        },
+        {
+          id: "erp-logic",
+          title: "Modelagem de ERPs & Transações Financeiras",
+          subtitle:
+            "Eliminação de vazamentos operacionais no varejo e serviços (TemperAndin / BarberFlow)",
+          category: "Arquitetura & Regras de Negócio",
+          problem:
+            "Negócios de varejo e serviços frequentemente perdem capital por falta de sincronia entre o estoque físico, o caixa financeiro e os agendamentos, operando em planilhas frágeis e descentralizadas.",
+          engineering: [
+            "Modelagem de banco de dados relacional (MySQL) focada em consistência transacional (ACID).",
+            "Implementação de lógica de baixa automática de insumos engatada diretamente ao evento de venda (PDV).",
+            "Construção de Dashboards analíticos que processam métricas em tempo real sem degradar a performance.",
+          ],
+          impact:
+            "Transformação de processos caóticos e manuais em fluxos auditáveis, eliminando furos de estoque e dando previsibilidade financeira exata ao gestor.",
+        },
+        {
+          id: "automation",
+          title: "Automação de Fluxos & Integração de Sistemas",
+          subtitle: "Conectando APIs e reduzindo trabalho manual repetitivo",
+          category: "Workflows & Eficiência",
+          problem:
+            "Processos manuais de atendimento, emissão de relatórios e conferência de dados geram gargalos humanos, lentidão na resposta ao cliente final e alta margem de erro humano.",
+          engineering: [
+            "Desenvolvimento de fluxos automatizados (N8N) integrando webhooks e APIs externas.",
+            "Decuplagem de serviços: o front-end consome endpoints rápidos enquanto rotinas pesadas rodam em segundo plano.",
+            "Aplicação de raciocínio analítico de processos logísticos para identificar e eliminar redundâncias operacionais.",
+          ],
+          impact:
+            "Redução drástica no tempo de execução de rotinas administrativas e aceleração no tempo de resposta e agendamento para clientes B2B/B2C.",
+        },
+        {
+          id: "ai-vision",
+          title: "Visão Computacional & Processamento de Vídeo",
+          subtitle:
+            "Mapeamento espacial em tempo real com Redes Neurais (YOLO / OpenCV)",
+          category: "IA & Performance",
+          problem:
+            "Rastrear objetos ou jogadores em vídeos esportivos exige processamento computacional intenso, onde algoritmos comuns geram alta latência (lag) e perda de quadros por segundo.",
+          engineering: [
+            "Otimização de pipelines de inferência de modelos YOLO em Python para detecção de múltiplos alvos.",
+            "Manipulação eficiente de matrizes de vídeo via OpenCV para calcular trajetórias e mapas de calor.",
+            "Arquitetura conteinerizada/cloud (Modal) para processar cargas de IA sem travar o cliente web.",
+          ],
+          impact:
+            "Geração automática de métricas táticas e analíticas de precisão em tempo real, substituindo a coleta manual laboriosa de analistas de desempenho.",
+        },
+      ],
     },
     skills: {
       title: "Minhas Skills",
@@ -296,7 +393,7 @@ export const translations: Record<Language, Translation> = {
         {
           name: "Victor Almeida",
           title: "Unity Developer | RA | RM | RV",
-          text: "João Roblez é um profissional notável, tive a honra de trabalhar ao seu lado e puder ver de perto como sua dedicação e metodologia de trabalho aplicada funcionam...",
+          text: "João Roblez é um profissional notável. Tive a honra de trabalhar ao seu lado e pude ver de perto como sua dedicação e metodologia de trabalho aplicada funcionam. Demonstra excelente capacidade técnica, alta adaptabilidade e perfil focado em resolução de problemas, sempre agregando grande valor técnico a projetos de software desafiadores.",
         },
       ],
     },
@@ -333,6 +430,83 @@ export const translations: Record<Language, Translation> = {
       educationTitle: "Education",
       educationCourse: "Systems Analysis and Development",
       educationStatus: "Completed in 2026",
+    },
+    engineering: {
+      badge: "Engineering Backstage",
+      title: "How I Solve",
+      titleHighlight: "Real-World Problems",
+      subtitle:
+        "Beyond code syntax: how I apply software architecture, transactional logic, and systemic thinking to deliver operational impact in production.",
+      caseStudyLabel: "Case Study",
+      problemLabel: "Operational Bottleneck / Challenge",
+      engineeringLabel: "Applied Engineering & Architecture",
+      impactLabel: "Business Result & Impact",
+      cases: [
+        {
+          id: "institutional",
+          title: "Institutional Support & Critical Environments",
+          subtitle:
+            "Technical management of web applications and innovation hubs (Sala Betha / Arena Lab)",
+          category: "Production & High Availability",
+          problem:
+            "Academic institutional ecosystems and high-tech laboratories demand zero downtime, seamless integration with diverse hardware/software suites, and rapid troubleshooting to prevent operational bottlenecks during live events.",
+          engineering: [
+            "Preventive and evolutionary maintenance of mission-critical institutional web applications.",
+            "Agile fault diagnosis across operating systems, network layers, and complex software integrations.",
+            "Standardization of high-performance lab environments, guaranteeing system stability for end users.",
+          ],
+          impact:
+            "Flawless operation of institutional excellence centers, reduced downtime, and high reliability in executing educational software suites.",
+        },
+        {
+          id: "erp-logic",
+          title: "ERP Modeling & Financial Transactions",
+          subtitle:
+            "Eliminating operational leaks in retail and services (TemperAndin / BarberFlow)",
+          category: "Architecture & Business Rules",
+          problem:
+            "Retail and service businesses frequently lose capital due to misaligned physical inventory, financial cash flow, and booking schedules while relying on decentralized spreadsheets.",
+          engineering: [
+            "Relational database modeling (MySQL) designed strictly around transactional consistency (ACID).",
+            "Automated inventory deduction logic coupled directly to point-of-sale (POS) checkout events.",
+            "Development of analytical dashboards processing real-time metrics without degrading database performance.",
+          ],
+          impact:
+            "Transformation of chaotic manual processes into auditable workflows, eliminating inventory discrepancies and giving exact financial predictability to stakeholders.",
+        },
+        {
+          id: "automation",
+          title: "Workflow Automation & System Integration",
+          subtitle:
+            "Connecting REST APIs and reducing repetitive manual overhead",
+          category: "Workflows & Efficiency",
+          problem:
+            "Manual customer onboarding, reporting, and data verification generate human bottlenecks, slow response times, and high margins for data entry errors.",
+          engineering: [
+            "Development of automated pipelines (N8N) integrating webhooks and external REST APIs.",
+            "Service decoupling: the front-end consumes low-latency endpoints while heavy tasks run asynchronously.",
+            "Applying analytical logistics principles to identify and eliminate operational redundancies.",
+          ],
+          impact:
+            "Drastic reduction in administrative overhead and accelerated response times for B2B/B2C client onboarding and scheduling.",
+        },
+        {
+          id: "ai-vision",
+          title: "Computer Vision & Video Processing",
+          subtitle:
+            "Real-time spatial mapping with Neural Networks (YOLO / OpenCV)",
+          category: "AI & High Performance",
+          problem:
+            "Tracking players and objects in live sports feeds requires heavy computational processing where standard algorithms cause frame drops and noticeable lag.",
+          engineering: [
+            "Optimization of YOLO inference pipelines in Python for multi-target spatial detection.",
+            "Efficient video frame matrix manipulation via OpenCV to compute player trajectories and heatmaps.",
+            "Cloud/containerized architecture (Modal) handling heavy AI inference without freezing client applications.",
+          ],
+          impact:
+            "Automated generation of real-time analytical and tactical metrics, replacing laborious manual scouting and performance data collection.",
+        },
+      ],
     },
     skills: {
       title: "My Skills",
