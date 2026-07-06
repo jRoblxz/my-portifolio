@@ -20,7 +20,7 @@ export function EngineeringImpact() {
   return (
     <section
       id="engineering"
-      className="py-24 bg-[#1e1c1c] text-[#e4e0d7] relative overflow-hidden font-spartan"
+      className="py-24 text-[#e4e0d7] relative overflow-hidden font-spartan"
     >
       {/* Iluminação de fundo abstrata */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7C3AED]/10 rounded-full blur-[160px] pointer-events-none" />
