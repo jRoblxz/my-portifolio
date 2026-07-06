@@ -652,6 +652,15 @@ export const translations: Record<Language, Translation> = {
           siteLink: "https://word-search-kpop.vercel.app",
           image: KpopGame,
         },
+        {
+          title: "Draftmon | Competitive Draft Simulator & Team Builder",
+          description:
+            "Interactive web application engineered for turn-based strategic drafting and team simulation. Features real-time pick exclusivity validation, complex front-end state management, and a highly responsive UI designed to streamline tactical decision-making.",
+          technologies: ["React", "TypeScript", "Tailwind CSS", "API"],
+          link: "https://github.com/jRoblxz/Draftmon", // Ajuste o link se necessário
+          siteLink: "https://draftmon.vercel.app", // Ajuste ou remova se não houver site online ainda
+          image: DraftmonImage,
+        },
       ],
     },
     contact: {
