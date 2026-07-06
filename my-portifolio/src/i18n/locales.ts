@@ -163,7 +163,7 @@ export const translations: Record<Language, Translation> = {
       educationStatus: "Concluído em 2026",
     },
     engineering: {
-      badge: "Bastidores de Engenharia",
+      badge: "Engenharia",
       title: "Como Eu Resolvo",
       titleHighlight: "Problemas Reais",
       subtitle:
@@ -174,20 +174,20 @@ export const translations: Record<Language, Translation> = {
       impactLabel: "Resultado & Impacto de Negócio",
       cases: [
         {
-          id: "institutional",
-          title: "Sustentação Institucional & Ambientes Críticos",
+          id: "portal-migration",
+          title: "Desacoplamento & Modernização de Portal Legado",
           subtitle:
-            "Gestão técnica de aplicações e laboratórios de inovação (Sala Betha / Arena Lab)",
-          category: "Produção & Alta Disponibilidade",
+            "Migração de monólito para arquitetura moderna (Laravel 12 API + React & TypeScript)",
+          category: "Refatoração & Migração de Arquitetura",
           problem:
-            "Ecossistemas institucionais acadêmicos e laboratórios de alta tecnologia exigem zero indisponibilidade, integração contínua com hardwares/softwares diversos e suporte rápido para não paralisar operações educacionais e eventos.",
+            "Sistemas monolíticos antigos com front-end acoplado (PHP, HTML, JS estático) sofrem com gargalos de manutenção, lentidão de interface e dificuldade de escalabilidade. A mistura de regras de visualização e regras de negócio tornava a evolução do portal institucional arriscada e custosa.",
           engineering: [
-            "Sustentação preventiva e evolutiva de aplicações web institucionais de uso contínuo.",
-            "Diagnóstico ágil de falhas em nível de sistema operacional, rede e integração de software.",
-            "Padronização de ambientes laboratoriais complexos, garantindo estabilidade para usuários finais.",
+            "Atualização e reengenharia do back-end para Laravel 12, transformando o monólito em uma API RESTful estruturada, segura e performática.",
+            "Construção de uma nova interface moderna (SPA) em React.js com TypeScript e Tailwind CSS, garantindo tipagem estática anti-erros e alta reatividade.",
+            "Refatoração de rotinas de autenticação e consumo de dados, aplicando boas práticas para desacoplar totalmente a camada de visualização do servidor.",
           ],
           impact:
-            "Operação fluida de laboratórios institucionais de excelência, redução no tempo de inatividade e alta confiabilidade na execução de softwares educacionais.",
+            "Salto drástico na velocidade de carregamento e navegação do portal, eliminação de bugs visuais por falha de tipagem e facilidade exponencial para escalar novas funcionalidades independentes no front ou no back.",
         },
         {
           id: "erp-logic",
@@ -443,20 +443,20 @@ export const translations: Record<Language, Translation> = {
       impactLabel: "Business Result & Impact",
       cases: [
         {
-          id: "institutional",
-          title: "Institutional Support & Critical Environments",
+          id: "portal-migration",
+          title: "Legacy Portal Decoupling & Modernization",
           subtitle:
-            "Technical management of web applications and innovation hubs (Sala Betha / Arena Lab)",
-          category: "Production & High Availability",
+            "Migrating a monolith to a modern stack (Laravel 12 API + React & TypeScript)",
+          category: "Architecture Refactoring & Migration",
           problem:
-            "Academic institutional ecosystems and high-tech laboratories demand zero downtime, seamless integration with diverse hardware/software suites, and rapid troubleshooting to prevent operational bottlenecks during live events.",
+            "Monolithic systems with coupled front-ends (legacy PHP, HTML, and vanilla JS) suffer from maintenance bottlenecks, sluggish UI reactivity, and scaling friction. Intertwined presentation logic and business rules made portal updates risky and time-consuming.",
           engineering: [
-            "Preventive and evolutionary maintenance of mission-critical institutional web applications.",
-            "Agile fault diagnosis across operating systems, network layers, and complex software integrations.",
-            "Standardization of high-performance lab environments, guaranteeing system stability for end users.",
+            "Upgrading and re-engineering the back-end architecture to Laravel 12, transforming the legacy structure into a high-performance RESTful API.",
+            "Developing a modern Single Page Application (SPA) using React.js, TypeScript, and Tailwind CSS for strict type safety and dynamic UI reactivity.",
+            "Refactoring authentication workflows and data endpoints, applying clean architecture principles to fully decouple the client layer from backend services.",
           ],
           impact:
-            "Flawless operation of institutional excellence centers, reduced downtime, and high reliability in executing educational software suites.",
+            "Drastic boost in page responsiveness and overall portal loading speed, elimination of runtime bugs through static typing, and a scalable, future-proof codebase.",
         },
         {
           id: "erp-logic",
